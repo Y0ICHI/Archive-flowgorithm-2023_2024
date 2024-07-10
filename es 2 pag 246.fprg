@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Lupo01"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2024-01-08 04:42:25 "/>
+        <attribute name="created" value="THVwbzAxO0NPTVBVVEVSLUFOVE9OSTsyMDI0LTAxLTA4OyIwMzo1NzowOSAiOzI4MzQ="/>
+        <attribute name="edited" value="THVwbzAxO0NPTVBVVEVSLUFOVE9OSTsyMDI0LTAxLTA4OyIwNDo0MjoyNSAiOzE7MjkzNQ=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <comment text="CD = Conta Divisori&#13;&#10;D = Divisori&#13;&#10;N = Numero&#13;&#10;l = boh"/>
+            <declare name="N, CD, i, l" type="Integer" array="False" size=""/>
+            <assign variable="l" expression="0"/>
+            <assign variable="CD" expression="0"/>
+            <output expression="&quot;N&quot;" newline="True"/>
+            <input variable="N"/>
+            <while expression="N&lt;0 || N&gt;10000">
+                <output expression="&quot;N.&quot;" newline="True"/>
+                <input variable="N"/>
+            </while>
+            <for variable="i" start="1" end="N" direction="inc" step="1">
+                <if expression="N%i==0">
+                    <then>
+                        <assign variable="CD" expression="CD+1"/>
+                    </then>
+                    <else/>
+                </if>
+            </for>
+            <declare name="D" type="Integer" array="True" size="CD"/>
+            <for variable="i" start="1" end="N" direction="inc" step="1">
+                <if expression="N%i==0">
+                    <then>
+                        <assign variable="D[l]" expression="i"/>
+                        <assign variable="l" expression="l+1"/>
+                    </then>
+                    <else/>
+                </if>
+            </for>
+            <assign variable="l" expression="0"/>
+            <for variable="i" start="1" end="CD" direction="inc" step="1">
+                <output expression="D[l]" newline="True"/>
+                <assign variable="l" expression="l+1"/>
+            </for>
+        </body>
+    </function>
+</flowgorithm>

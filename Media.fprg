@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Lupo01"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-10-20 12:04:06 "/>
+        <attribute name="created" value="THVwbzAxO0NPTVBVVEVSLUFOVE9OSTsyMDIzLTEwLTE5OyIwMzowNjoxMyAiOzI4MjQ="/>
+        <attribute name="edited" value="THVwbzAxO0NPTVBVVEVSLUFOVE9OSTsyMDIzLTEwLTE5OyIwMzo0NDoxNiAiOzE7MjkzNw=="/>
+        <attribute name="edited" value="TGFiSW5mbztJTkZPMS1BTFUwNjsyMDIzLTEwLTIwOyIxMjowNDowNiAiOzE7MjY3NQ=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="C, N2, S, N" type="Integer" array="False" size=""/>
+            <declare name="M" type="Real" array="False" size=""/>
+            <output expression="&quot;Quanti sono i numeri per cui devo fare la media?&quot;" newline="True"/>
+            <input variable="N2"/>
+            <if expression="N2&gt;0">
+                <then>
+                    <assign variable="S" expression="0"/>
+                    <assign variable="C" expression="0"/>
+                    <do expression="N2&gt;C">
+                        <output expression="&quot;Inserisci il numero per cui vuoi fare la media.&quot;" newline="True"/>
+                        <input variable="N"/>
+                        <assign variable="S" expression="S+N"/>
+                        <assign variable="C" expression="C+1"/>
+                    </do>
+                </then>
+                <else/>
+            </if>
+            <assign variable="M" expression="S/N2"/>
+            <output expression="&quot;La media &#232; &quot; &amp; M" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>

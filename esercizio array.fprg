@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="LabInfo"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2024-02-07 01:46:18 "/>
+        <attribute name="created" value="TGFiSW5mbztJTkZPMS1BTFUwNDsyMDI0LTAyLTA3OyIwMToxNTo1OCAiOzI1Nzk="/>
+        <attribute name="edited" value="TGFiSW5mbztJTkZPMS1BTFUwNDsyMDI0LTAyLTA3OyIwMTo0NjoxOCAiOzE7MjY4Nw=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="dim, i, l" type="Integer" array="False" size=""/>
+            <assign variable="dim" expression="10"/>
+            <declare name="N, C" type="Integer" array="True" size="dim"/>
+            <for variable="i" start="0" end="dim-1" direction="inc" step="1">
+                <assign variable="N[i]" expression="Random(20)"/>
+                <output expression="i+1 &amp; &quot; &quot; &amp; N[i]" newline="True"/>
+            </for>
+            <comment text="Il programma trova i duplicati"/>
+            <for variable="l" start="0" end="dim-1" direction="inc" step="1">
+                <assign variable="i" expression="l+1"/>
+                <while expression="i&lt;dim-1">
+                    <if expression="N[l]=N[i]">
+                        <then>
+                            <output expression="N[l]" newline="True"/>
+                        </then>
+                        <else/>
+                    </if>
+                    <assign variable="i" expression="i+1"/>
+                </while>
+            </for>
+            <comment text="Il programma deve mostrare il numero che viene ripetuto pi&#249; volte, se c'&#232; pi&#249; di un numero che ha lo stesso numero di ripetizioni, allora dovr&#224; mostrare il numero pi&#249; piccolo (ex. 3 volte 3 e 3 volte 2, allora 2 dovr&#224; mostrare)"/>
+        </body>
+    </function>
+</flowgorithm>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="LabInfo"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-11-10 12:14:31 "/>
+        <attribute name="created" value="TGFiSW5mbztJTkZPMS1BTFUyMjsyMDIzLTExLTEwOyIxMjowMToyNCAiOzI1NjI="/>
+        <attribute name="edited" value="TGFiSW5mbztJTkZPMS1BTFUyMjsyMDIzLTExLTEwOyIxMjoxNDozMSAiOzE7MjY3Mg=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="N, N2, C" type="Integer" array="False" size=""/>
+            <output expression="&quot;Inserisci il primo numero.&quot;" newline="True"/>
+            <input variable="N"/>
+            <assign variable="C" expression="0"/>
+            <while expression="N&lt;1000">
+                <output expression="&quot;Inserisci il numero con cui sommare.&quot;" newline="True"/>
+                <input variable="N2"/>
+                <assign variable="N" expression="N+N2"/>
+                <assign variable="C" expression="C+1"/>
+            </while>
+            <output expression="&quot;Hai sommato &quot; &amp; C &amp; &quot; volte prima di raggiungere il numero 1000!&quot;" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>

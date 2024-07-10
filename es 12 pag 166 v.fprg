@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Lupo01"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-11-16 05:40:27 "/>
+        <attribute name="created" value="THVwbzAxO0NPTVBVVEVSLUFOVE9OSTsyMDIzLTExLTE2OyIwNDozNzozNyAiOzI4MzM="/>
+        <attribute name="edited" value="THVwbzAxO0NPTVBVVEVSLUFOVE9OSTsyMDIzLTExLTE2OyIwNTo0MDoyNyAiOzE7MjkzNQ=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="NUM, somma, i" type="Integer" array="False" size=""/>
+            <assign variable="somma" expression="0"/>
+            <output expression="&quot;NUM&quot;" newline="True"/>
+            <input variable="NUM"/>
+            <for variable="i" start="2" end="NUM*2" direction="inc" step="2">
+                <assign variable="somma" expression="somma + i"/>
+            </for>
+            <output expression="&quot;La somma dei primi&quot; &amp; NUM &amp; &quot; interi positivi pari &#232;: &quot; &amp; somma" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>

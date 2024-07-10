@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="docente"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2024-01-11 10:23:08 "/>
+        <attribute name="created" value="ZG9jZW50ZTtMQVBUT1AtRjkzS0JNUUs7MjAyNC0wMS0xMTsiMTA6MDQ6MjIgIjsyOTc0"/>
+        <attribute name="edited" value="ZG9jZW50ZTtMQVBUT1AtRjkzS0JNUUs7MjAyNC0wMS0xMTsiMTA6MjM6MDggIjsyOzMwODg="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="dim, i, pos" type="Integer" array="False" size=""/>
+            <do expression="dim &lt;= 0">
+                <input variable="dim"/>
+            </do>
+            <declare name="Cognomi" type="String" array="True" size="dim"/>
+            <comment text="caricamento dei cognomi"/>
+            <output expression="&quot;Dammi mil cognome da rimuovere&quot;" newline="True"/>
+            <declare name="cercato" type="String" array="False" size=""/>
+            <input variable="cercato"/>
+            <assign variable="pos" expression="-1"/>
+            <for variable="i" start="0" end="dim-1" direction="inc" step="1">
+                <if expression="cercato = Cognomi[i]">
+                    <then>
+                        <assign variable="pos" expression="i"/>
+                        <assign variable="i" expression="dim"/>
+                    </then>
+                    <else/>
+                </if>
+            </for>
+            <if expression="pos &lt;&gt; -1">
+                <then>
+                    <for variable="i" start="pos" end="dim-2" direction="inc" step="1">
+                        <assign variable="Cognomi[i]" expression="Cognomi[i+1]"/>
+                    </for>
+                    <assign variable="dim" expression="dim-1"/>
+                </then>
+                <else>
+                    <output expression="&quot;Il cognome da cercare non &#232; presente nell'elenco&quot;" newline="True"/>
+                </else>
+            </if>
+        </body>
+    </function>
+</flowgorithm>

@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Sistema03"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-12-07 12:55:20 "/>
+        <attribute name="created" value="U2lzdGVtYTAzO1NJU1RFTUEwMzsyMDIzLTEyLTA3OyIxMjozNTowMiAiOzI2NDM="/>
+        <attribute name="edited" value="U2lzdGVtYTAzO1NJU1RFTUEwMzsyMDIzLTEyLTA3OyIxMjo1NToyMCAiOzE7Mjc1Mw=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="N, NR, C, S" type="Integer" array="False" size=""/>
+            <assign variable="S" expression="0"/>
+            <assign variable="C" expression="0"/>
+            <output expression="&quot;N&quot;" newline="True"/>
+            <input variable="N"/>
+            <while expression="N&lt;0">
+                <output expression="&quot;ERRORE&quot;" newline="True"/>
+                <input variable="N"/>
+            </while>
+            <while expression="N!=0">
+                <assign variable="NR" expression="N"/>
+                <while expression="NR&gt;0">
+                    <assign variable="NR" expression="NR-2"/>
+                </while>
+                <if expression="NR=0">
+                    <then>
+                        <assign variable="C" expression="C+1"/>
+                    </then>
+                    <else>
+                        <assign variable="S" expression="S+N"/>
+                    </else>
+                </if>
+                <output expression="&quot;A&quot;" newline="True"/>
+                <input variable="N"/>
+                <while expression="N&lt;0">
+                    <output expression="&quot;ERRORE&quot;" newline="True"/>
+                    <input variable="N"/>
+                </while>
+            </while>
+            <output expression="&quot;Sono stati inseriti &quot; &amp;  C &amp; &quot; volte numeri pari&quot;" newline="True"/>
+            <output expression="&quot;La somma dei numeri dispari &#232; &quot; &amp; S" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>

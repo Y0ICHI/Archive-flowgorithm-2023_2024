@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="LabInfo"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2024-03-13 01:48:50 "/>
+        <attribute name="created" value="TGFiSW5mbztJTkZPMS1BTFUwNDsyMDI0LTAzLTEzOyIwMToxNjozMSAiOzI1Njk="/>
+        <attribute name="edited" value="TGFiSW5mbztJTkZPMS1BTFUwNDsyMDI0LTAzLTEzOyIwMTo0ODo1MCAiOzE7MjY4Mw=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="numeri" type="Integer" array="True" size="3"/>
+            <declare name="j" type="Integer" array="False" size=""/>
+            <output expression="&quot;Inserire i numeri&quot;" newline="True"/>
+            <for variable="j" start="0" end="2" direction="inc" step="1">
+                <input variable="numeri[j]"/>
+            </for>
+            <call expression="Scambio(numeri)"/>
+            <for variable="j" start="0" end="2" direction="inc" step="1">
+                <output expression="numeri[j]" newline="True"/>
+            </for>
+        </body>
+    </function>
+    <function name="Scambio" type="None" variable="">
+        <parameters>
+            <parameter name="numeri" type="Integer" array="True"/>
+        </parameters>
+        <body>
+            <declare name="i, s" type="Integer" array="False" size=""/>
+            <for variable="i" start="0" end="2" direction="inc" step="1">
+                <if expression="numeri[0]&gt;numeri[1]">
+                    <then>
+                        <assign variable="s" expression="numeri[0]"/>
+                        <assign variable="numeri[0]" expression="numeri[1]"/>
+                        <assign variable="numeri[1]" expression="s"/>
+                    </then>
+                    <else/>
+                </if>
+                <if expression="numeri[1]&gt;numeri[2]">
+                    <then>
+                        <assign variable="s" expression="numeri[1]"/>
+                        <assign variable="numeri[1]" expression="numeri[2]"/>
+                        <assign variable="numeri[2]" expression="s"/>
+                    </then>
+                    <else/>
+                </if>
+            </for>
+        </body>
+    </function>
+</flowgorithm>

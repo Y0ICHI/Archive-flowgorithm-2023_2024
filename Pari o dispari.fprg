@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Lupo01"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-10-18 05:20:36 "/>
+        <attribute name="created" value="THVwbzAxO0NPTVBVVEVSLUFOVE9OSTsyMDIzLTEwLTE4OyIwNDoxOToyMyAiOzI4Mjk="/>
+        <attribute name="edited" value="THVwbzAxO0NPTVBVVEVSLUFOVE9OSTsyMDIzLTEwLTE4OyIwNToyMDozNiAiOzE7MjkzNA=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="N" type="Integer" array="False" size=""/>
+            <output expression="&quot;Inseriscimi il numero&quot;" newline="True"/>
+            <input variable="N"/>
+            <while expression="N&gt;1">
+                <assign variable="N" expression="N-2"/>
+            </while>
+            <if expression="N=0">
+                <then>
+                    <output expression="&quot;Il numero &#232; pari&quot;" newline="True"/>
+                </then>
+                <else>
+                    <output expression="&quot;Il numero &#232; dispari&quot;" newline="True"/>
+                </else>
+            </if>
+        </body>
+    </function>
+</flowgorithm>

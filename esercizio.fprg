@@ -1,0 +1,355 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Lupo01"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2024-04-03 01:49:46 "/>
+        <attribute name="created" value="THVwbzAxO0NPTVBVVEVSLUFOVE9OSTsyMDI0LTAzLTI5OyIwOTowMjoyOSAiOzI4Mzc="/>
+        <attribute name="edited" value="THVwbzAxO0NPTVBVVEVSLUFOVE9OSTsyMDI0LTAzLTMxOyIxMTozMjoyNyAiOzIzOzI5ODQ="/>
+        <attribute name="edited" value="TGFiSW5mbztJTkZPMS1BTFUwNDsyMDI0LTA0LTAzOyIwMTo0OTo0NiAiOzI7MjY5MA=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="dim, MaxDim, z" type="Integer" array="False" size=""/>
+            <comment text="capacit&#224; massima"/>
+            <assign variable="MaxDim" expression="50"/>
+            <comment text="dimensione vettore"/>
+            <output expression="&quot;Inserire la dimensione&quot;" newline="True"/>
+            <input variable="dim"/>
+            <while expression="dim&lt;=0 || dim&gt;MaxDim">
+                <output expression="&quot;Inserire un altra dimensione&quot;" newline="True"/>
+                <input variable="dim"/>
+            </while>
+            <comment text="caricamento (step &quot;a&quot; completato)&#13;&#10;I caricamenti su C++ sono overload."/>
+            <declare name="NumPosto" type="Integer" array="True" size="dim"/>
+            <call expression="Caricamento1(dim, NumPosto)"/>
+            <declare name="Classe" type="String" array="True" size="dim"/>
+            <call expression="Caricamento2(dim, Classe)"/>
+            <declare name="Prezzo" type="Real" array="True" size="dim"/>
+            <call expression="Caricamento3(dim, Prezzo)"/>
+            <declare name="Prenotato" type="Boolean" array="True" size="dim"/>
+            <call expression="Caricamento4(dim, Prenotato)"/>
+            <comment text="punto b (completato)"/>
+            <declare name="cClasse" type="String" array="False" size=""/>
+            <output expression="&quot;Inserire la classe da cercare.&quot;" newline="True"/>
+            <input variable="cClasse"/>
+            <while expression="cClasse != &quot;prima&quot; &amp;&amp; cClasse != &quot;seconda&quot; &amp;&amp; cClasse!= &quot;economica&quot;">
+                <output expression="&quot;Errore inserire una classe valida&quot;" newline="True"/>
+                <output expression="&quot;Le classi valide: prima, seconda, economica&quot;" newline="True"/>
+                <input variable="cClasse"/>
+            </while>
+            <call expression="cercaClasse(dim, Classe, cClasse, NumPosto)"/>
+            <comment text="punto c (completato)"/>
+            <declare name="stop" type="Boolean" array="False" size=""/>
+            <assign variable="stop" expression="false"/>
+            <declare name="scelta" type="String" array="False" size=""/>
+            <declare name="cassa" type="Real" array="False" size=""/>
+            <assign variable="cassa" expression="0"/>
+            <declare name="cercaPosto, trovatino" type="Integer" array="False" size=""/>
+            <while expression="stop == false">
+                <output expression="&quot;Inserire il posto interessato&quot;" newline="True"/>
+                <input variable="cercaPosto"/>
+                <assign variable="trovatino" expression="cercaPosto(dim, NumPosto, cercaPosto, Prenotato)"/>
+                <if expression="trovatino!=-1">
+                    <then>
+                        <output expression="&quot;Posto trovato e venduto con successo!&quot;" newline="True"/>
+                        <assign variable="cassa" expression="cassa+Prezzo[trovatino]"/>
+                        <call expression="rimozione(dim, trovatino, NumPosto, Classe, Prezzo, Prenotato)"/>
+                        <comment text="neccessario su flowgorithm per diminuire la dimensione dal main."/>
+                        <assign variable="dim" expression="dim-1"/>
+                    </then>
+                    <else>
+                        <output expression="&quot;Il posto cercato non esiste o non &#232; disponibile per la vendita!&quot;" newline="True"/>
+                    </else>
+                </if>
+                <output expression="&quot;Continuare la ricerca? (si/no)&quot;" newline="True"/>
+                <input variable="scelta"/>
+                <while expression="scelta!=&quot;si&quot; &amp;&amp; scelta!=&quot;no&quot;">
+                    <output expression="&quot;riprovare. inserire si o no&quot;" newline="True"/>
+                    <input variable="scelta"/>
+                </while>
+                <if expression="scelta==&quot;no&quot;">
+                    <then>
+                        <assign variable="stop" expression="true"/>
+                        <output expression="&quot;Incasso totale: &quot; &amp; cassa &amp; &quot;&#8364;&quot;" newline="True"/>
+                        <output expression="&quot;Posti prenotati ma non venduti&quot;" newline="True"/>
+                        <for variable="z" start="0" end="dim-1" direction="inc" step="1">
+                            <if expression="Prenotato[z] == true">
+                                <then>
+                                    <output expression="&quot;Posto: &quot; &amp; NumPosto[z] &amp; &quot; Classe: &quot; &amp; Classe[z] &amp; &quot; Prezzo: &quot; &amp; Prezzo[z] &amp; &quot;&#8364;&quot;" newline="True"/>
+                                </then>
+                                <else/>
+                            </if>
+                        </for>
+                    </then>
+                    <else/>
+                </if>
+            </while>
+            <comment text="punto d (completato)"/>
+            <call expression="Ordinamento(dim,  NumPosto, Classe, Prezzo, Prenotato)"/>
+            <output expression="&quot;Posti non prenotati, ma non venduti.&quot;" newline="True"/>
+            <for variable="z" start="0" end="dim-1" direction="inc" step="1">
+                <if expression="Prenotato[z] == false">
+                    <then>
+                        <output expression="&quot;Posto: &quot; &amp; NumPosto[z] &amp; &quot; Classe: &quot; &amp; Classe[z] &amp; &quot; Prezzo: &quot; &amp; Prezzo[z] &amp; &quot;&#8364;&quot;" newline="True"/>
+                    </then>
+                    <else/>
+                </if>
+            </for>
+        </body>
+    </function>
+    <function name="Caricamento1" type="None" variable="">
+        <parameters>
+            <parameter name="dim" type="Integer" array="False"/>
+            <parameter name="n" type="Integer" array="True"/>
+        </parameters>
+        <body>
+            <declare name="i" type="Integer" array="False" size=""/>
+            <for variable="i" start="0" end="dim-1" direction="inc" step="1">
+                <output expression="i+1 &amp; &quot; Inserire il posto.&quot;" newline="True"/>
+                <input variable="n[i]"/>
+                <while expression="Duplicato(i, n[i], n) == true">
+                    <output expression="i+1 &amp; &quot; Errore! Inserire di nuovo il posto!&quot;" newline="True"/>
+                    <input variable="n[i]"/>
+                </while>
+            </for>
+        </body>
+    </function>
+    <function name="Caricamento2" type="None" variable="">
+        <parameters>
+            <parameter name="dim" type="Integer" array="False"/>
+            <parameter name="classe" type="String" array="True"/>
+        </parameters>
+        <body>
+            <declare name="i" type="Integer" array="False" size=""/>
+            <for variable="i" start="0" end="dim-1" direction="inc" step="1">
+                <output expression="i+1 &amp; &quot; Inserire la classe (per favore inserirla senza maiuscole o senza errori di punteggiatura).&quot;" newline="True"/>
+                <output expression="&quot;Le classi disponibili: prima, seconda, economica&quot;" newline="True"/>
+                <input variable="classe[i]"/>
+                <while expression="classe[i] != &quot;prima&quot; &amp;&amp; classe[i] != &quot;seconda&quot; &amp;&amp; classe[i] != &quot;economica&quot;">
+                    <output expression="i+1 &amp; &quot; errore, riprovare!&quot;" newline="True"/>
+                    <output expression="&quot;Le classi disponibili: prima, seconda, economica&quot;" newline="True"/>
+                    <input variable="classe[i]"/>
+                </while>
+            </for>
+        </body>
+    </function>
+    <function name="Caricamento3" type="None" variable="">
+        <parameters>
+            <parameter name="dim" type="Integer" array="False"/>
+            <parameter name="Prezzo" type="Real" array="True"/>
+        </parameters>
+        <body>
+            <declare name="i" type="Integer" array="False" size=""/>
+            <for variable="i" start="0" end="dim-1" direction="inc" step="1">
+                <output expression="i+1 &amp; &quot; Inserire il prezzo di vendita&quot;" newline="True"/>
+                <input variable="Prezzo[i]"/>
+                <while expression="Prezzo[i]&lt;0">
+                    <output expression="i+1 &amp; &quot; Errore, non pu&#242; essere negativo. Se lo vuoi mettere gratis, buon per te&quot;" newline="True"/>
+                    <input variable="Prezzo[i]"/>
+                </while>
+            </for>
+        </body>
+    </function>
+    <function name="Caricamento4" type="None" variable="">
+        <parameters>
+            <parameter name="dim" type="Integer" array="False"/>
+            <parameter name="prenotato" type="Boolean" array="True"/>
+        </parameters>
+        <body>
+            <declare name="i" type="Integer" array="False" size=""/>
+            <declare name="scelta" type="String" array="False" size=""/>
+            <for variable="i" start="0" end="dim-1" direction="inc" step="1">
+                <output expression="i+1 &amp; &quot; &#200; prenotato? (si/no)&quot;" newline="True"/>
+                <input variable="scelta"/>
+                <while expression="scelta!= &quot;si&quot; &amp;&amp; scelta!=&quot;no&quot; &amp;&amp; scelta!=&quot;n&quot; &amp;&amp; scelta!=&quot;y&quot;">
+                    <output expression="i+1 &amp; &quot; Errore, riporvare. (TIP: puoi scrivere y oppure n invece di scrivere si o no)&quot;" newline="True"/>
+                    <input variable="scelta"/>
+                </while>
+                <if expression="scelta == &quot;si&quot; || scelta == &quot;y&quot;">
+                    <then>
+                        <assign variable="prenotato[i]" expression="true"/>
+                    </then>
+                    <else>
+                        <assign variable="prenotato[i]" expression="false"/>
+                    </else>
+                </if>
+            </for>
+        </body>
+    </function>
+    <function name="cercaClasse" type="None" variable="">
+        <parameters>
+            <parameter name="dim" type="Integer" array="False"/>
+            <parameter name="classe" type="String" array="True"/>
+            <parameter name="cerca" type="String" array="False"/>
+            <parameter name="codice" type="Integer" array="True"/>
+        </parameters>
+        <body>
+            <declare name="i, l" type="Integer" array="False" size=""/>
+            <assign variable="l" expression="0"/>
+            <for variable="i" start="0" end="dim-1" direction="inc" step="1">
+                <if expression="cerca == classe[i]">
+                    <then>
+                        <output expression="&quot;Classe trovata! Il numero &#232; &quot; &amp; codice[i]" newline="True"/>
+                        <assign variable="l" expression="1"/>
+                    </then>
+                    <else/>
+                </if>
+            </for>
+            <if expression="l=0">
+                <then>
+                    <output expression="&quot;Nessuno posto trovato per la classe scelta.&quot;" newline="True"/>
+                </then>
+                <else/>
+            </if>
+        </body>
+    </function>
+    <function name="cercaPosto" type="Integer" variable="postotrovato">
+        <parameters>
+            <parameter name="dim" type="Integer" array="False"/>
+            <parameter name="posto" type="Integer" array="True"/>
+            <parameter name="cercaPosto" type="Integer" array="False"/>
+            <parameter name="prenotato" type="Boolean" array="True"/>
+        </parameters>
+        <body>
+            <declare name="i" type="Integer" array="False" size=""/>
+            <declare name="postotrovato" type="Integer" array="False" size=""/>
+            <assign variable="postotrovato" expression="-1"/>
+            <declare name="trovato, controlloPrenotato" type="Boolean" array="False" size=""/>
+            <assign variable="trovato" expression="false"/>
+            <assign variable="controlloPrenotato" expression="false"/>
+            <assign variable="i" expression="-1"/>
+            <while expression="i&lt;=dim-2 &amp;&amp; trovato==false">
+                <assign variable="i" expression="i+1"/>
+                <if expression="cercaPosto == posto[i]">
+                    <then>
+                        <assign variable="trovato" expression="true"/>
+                    </then>
+                    <else/>
+                </if>
+            </while>
+            <if expression="trovato == true">
+                <then>
+                    <assign variable="controlloPrenotato" expression="controlloPrenotato(dim, posto, cercaPosto, prenotato)"/>
+                </then>
+                <else/>
+            </if>
+            <if expression="trovato == true &amp;&amp; controlloPrenotato == false">
+                <then>
+                    <assign variable="postotrovato" expression="i"/>
+                </then>
+                <else>
+                    <assign variable="postotrovato" expression="-1"/>
+                </else>
+            </if>
+        </body>
+    </function>
+    <function name="controlloPrenotato" type="Boolean" variable="prenotato">
+        <parameters>
+            <parameter name="dim" type="Integer" array="False"/>
+            <parameter name="posto" type="Integer" array="True"/>
+            <parameter name="cercaPosto" type="Integer" array="False"/>
+            <parameter name="prenotazione" type="Boolean" array="True"/>
+        </parameters>
+        <body>
+            <declare name="prenotato, trovato" type="Boolean" array="False" size=""/>
+            <declare name="i" type="Integer" array="False" size=""/>
+            <assign variable="i" expression="-1"/>
+            <assign variable="trovato" expression="false"/>
+            <assign variable="prenotato" expression="false"/>
+            <while expression="i&lt;=dim-1 &amp;&amp; trovato == false">
+                <assign variable="i" expression="i+1"/>
+                <if expression="cercaPosto == posto[i]">
+                    <then>
+                        <assign variable="prenotato" expression="prenotazione[i]"/>
+                        <assign variable="trovato" expression="true"/>
+                    </then>
+                    <else/>
+                </if>
+            </while>
+        </body>
+    </function>
+    <function name="Duplicato" type="Boolean" variable="trovato">
+        <parameters>
+            <parameter name="dim" type="Integer" array="False"/>
+            <parameter name="n" type="Integer" array="False"/>
+            <parameter name="n2" type="Integer" array="True"/>
+        </parameters>
+        <body>
+            <declare name="i" type="Integer" array="False" size=""/>
+            <declare name="trovato" type="Boolean" array="False" size=""/>
+            <assign variable="trovato" expression="false"/>
+            <for variable="i" start="0" end="dim-1" direction="inc" step="1">
+                <if expression="n2[i] == n">
+                    <then>
+                        <assign variable="trovato" expression="true"/>
+                    </then>
+                    <else/>
+                </if>
+            </for>
+        </body>
+    </function>
+    <function name="Ordinamento" type="None" variable="">
+        <parameters>
+            <parameter name="dim" type="Integer" array="False"/>
+            <parameter name="coso1" type="Integer" array="True"/>
+            <parameter name="coso2" type="String" array="True"/>
+            <parameter name="coso3" type="Real" array="True"/>
+            <parameter name="coso4" type="Boolean" array="True"/>
+        </parameters>
+        <body>
+            <declare name="i, j, s, t" type="Integer" array="False" size=""/>
+            <declare name="t1" type="String" array="False" size=""/>
+            <declare name="t2" type="Real" array="False" size=""/>
+            <declare name="t3" type="Boolean" array="False" size=""/>
+            <for variable="i" start="0" end="dim-1" direction="inc" step="1">
+                <assign variable="s" expression="i"/>
+                <for variable="j" start="i+1" end="dim-1" direction="inc" step="1">
+                    <if expression="coso1[j]&lt;coso1[s]">
+                        <then>
+                            <assign variable="s" expression="j"/>
+                        </then>
+                        <else/>
+                    </if>
+                </for>
+                <assign variable="t" expression="coso1[s]"/>
+                <assign variable="coso1[s]" expression="coso1[i]"/>
+                <assign variable="coso1[i]" expression="t"/>
+                <comment text=""/>
+                <assign variable="t1" expression="coso2[s]"/>
+                <assign variable="coso2[s]" expression="coso2[i]"/>
+                <assign variable="coso2[i]" expression="t1"/>
+                <comment text=""/>
+                <assign variable="t2" expression="coso3[s]"/>
+                <assign variable="coso3[s]" expression="coso3[i]"/>
+                <assign variable="coso3[i]" expression="t2"/>
+                <comment text=""/>
+                <assign variable="t3" expression="coso4[s]"/>
+                <assign variable="coso4[s]" expression="coso4[i]"/>
+                <assign variable="coso4[i]" expression="t3"/>
+            </for>
+        </body>
+    </function>
+    <function name="rimozione" type="None" variable="">
+        <parameters>
+            <parameter name="dim" type="Integer" array="False"/>
+            <parameter name="pos" type="Integer" array="False"/>
+            <parameter name="coso1" type="Integer" array="True"/>
+            <parameter name="coso2" type="String" array="True"/>
+            <parameter name="coso3" type="Real" array="True"/>
+            <parameter name="coso4" type="Boolean" array="True"/>
+        </parameters>
+        <body>
+            <declare name="i" type="Integer" array="False" size=""/>
+            <for variable="i" start="pos" end="dim-2" direction="inc" step="1">
+                <assign variable="coso1[i]" expression="coso1[i+1]"/>
+                <assign variable="coso2[i]" expression="coso2[i+1]"/>
+                <assign variable="coso3[i]" expression="coso3[i+1]"/>
+                <assign variable="coso4[i]" expression="coso4[i+1]"/>
+            </for>
+            <assign variable="dim" expression="dim-1"/>
+        </body>
+    </function>
+</flowgorithm>

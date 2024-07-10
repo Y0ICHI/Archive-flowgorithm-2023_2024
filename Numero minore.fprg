@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Lupo01"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-11-13 08:10:32 "/>
+        <attribute name="created" value="THVwbzAxO0NPTVBVVEVSLUFOVE9OSTsyMDIzLTExLTEzOyIwNzowMTo1NiAiOzI4MjU="/>
+        <attribute name="edited" value="THVwbzAxO0NPTVBVVEVSLUFOVE9OSTsyMDIzLTExLTEzOyIwODoxMDozMiAiOzE7MjkyOA=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="N, N2, M" type="Integer" array="False" size=""/>
+            <assign variable="M" expression="2147483647"/>
+            <assign variable="N2" expression="0"/>
+            <output expression="&quot;N&quot;" newline="True"/>
+            <input variable="N"/>
+            <while expression="N&lt;=0">
+                <output expression="&quot;Errore, il primo numero inserito deve per forza essere maggiore di 0&quot;" newline="True"/>
+                <input variable="N"/>
+            </while>
+            <if expression="N&lt;M">
+                <then>
+                    <assign variable="M" expression="N"/>
+                </then>
+                <else/>
+            </if>
+            <while expression="N&gt;0">
+                <output expression="&quot;Inserici il prossimo numero&quot;" newline="True"/>
+                <input variable="N"/>
+                <if expression="N=0">
+                    <then>
+                        <output expression="&quot;Il numero pi&#249; piccolo inserito &#232; &quot; &amp; M" newline="True"/>
+                        <breakpoint/>
+                    </then>
+                    <else/>
+                </if>
+                <if expression="N&lt;M">
+                    <then>
+                        <assign variable="M" expression="N"/>
+                        <assign variable="N2" expression="M"/>
+                    </then>
+                    <else/>
+                </if>
+            </while>
+        </body>
+    </function>
+</flowgorithm>

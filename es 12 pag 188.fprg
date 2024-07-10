@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Lupo01"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-11-23 04:48:17 "/>
+        <attribute name="created" value="THVwbzAxO0NPTVBVVEVSLUFOVE9OSTsyMDIzLTExLTIzOyIwNDoxOTo1MCAiOzI4MjY="/>
+        <attribute name="edited" value="THVwbzAxO0NPTVBVVEVSLUFOVE9OSTsyMDIzLTExLTIzOyIwNDo0ODoxNyAiOzE7MjkzOQ=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="C, N" type="Integer" array="False" size=""/>
+            <assign variable="C" expression="0"/>
+            <assign variable="N" expression="0"/>
+            <while expression="C&lt;12">
+                <output expression="&quot;*&quot;" newline="False"/>
+                <assign variable="C" expression="C+1"/>
+            </while>
+            <assign variable="C" expression="0"/>
+            <while expression="N&lt;11">
+                <output expression="&quot;*&quot;" newline="True"/>
+                <while expression="C&lt;10">
+                    <output expression="&quot; &quot;" newline="False"/>
+                    <assign variable="C" expression="C+1"/>
+                </while>
+                <assign variable="N" expression="N+1"/>
+            </while>
+            <assign variable="C" expression="0"/>
+            <while expression="C&lt;12">
+                <output expression="&quot;*&quot;" newline="False"/>
+                <assign variable="C" expression="C+1"/>
+            </while>
+        </body>
+    </function>
+</flowgorithm>

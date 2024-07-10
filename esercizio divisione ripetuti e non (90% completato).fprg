@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="LabInfo"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2024-01-19 12:47:19 "/>
+        <attribute name="created" value="TGFiSW5mbztJTkZPMS1BTFUwNDsyMDI0LTAxLTE3OyIwMToxMzozMiAiOzI1Njk="/>
+        <attribute name="edited" value="TGFiSW5mbztJTkZPMS1BTFUwNDsyMDI0LTAxLTE3OyIwMTo0NDowNSAiOzE7MjY4MQ=="/>
+        <attribute name="edited" value="THVwbzAxO0NPTVBVVEVSLUFOVE9OSTsyMDI0LTAxLTE3OyIwNjowMToxMSAiOzE7MjkyNw=="/>
+        <attribute name="edited" value="TGFiSW5mbztJTkZPMS1BTFUwMzsyMDI0LTAxLTE5OyIxMjo0NzoxOSAiOzY7MjY5Nw=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <comment text="N = Numeri&#13;&#10;NC = Numeri contrario&#13;&#10;dim = dimensione&#13;&#10;i = boh&#13;&#10;min = minimo&#13;&#10;max = massimo"/>
+            <declare name="dim, i, min, max, l, j" type="Integer" array="False" size=""/>
+            <assign variable="max" expression="0"/>
+            <output expression="&quot;Quanti sono i numeri che devo avere?&quot;" newline="True"/>
+            <input variable="dim"/>
+            <declare name="N" type="Integer" array="True" size="dim"/>
+            <declare name="NC" type="Integer" array="True" size="dim"/>
+            <output expression="&quot;Ordine crescente:&quot;" newline="True"/>
+            <for variable="i" start="0" end="dim-1" direction="inc" step="1">
+                <assign variable="N[i]" expression="Random(29)"/>
+                <output expression="i+1 &amp; &quot; &quot; &amp; N[i]" newline="True"/>
+            </for>
+            <assign variable="min" expression="N[0]"/>
+            <for variable="i" start="0" end="dim-1" direction="inc" step="1">
+                <if expression="N[i]&lt;min">
+                    <then>
+                        <assign variable="min" expression="N[i]"/>
+                    </then>
+                    <else/>
+                </if>
+                <if expression="N[i]&gt;max">
+                    <then>
+                        <assign variable="max" expression="N[i]"/>
+                    </then>
+                    <else/>
+                </if>
+            </for>
+            <output expression="&quot;Numero maggiore: &quot; &amp; max" newline="True"/>
+            <output expression="&quot;Numero minore: &quot; &amp; min" newline="True"/>
+            <assign variable="l" expression="dim"/>
+            <output expression="&quot;Inverso: &quot;" newline="True"/>
+            <for variable="i" start="dim-1" end="0" direction="dec" step="1">
+                <assign variable="NC[i]" expression="N[l-1]"/>
+                <assign variable="l" expression="l-1"/>
+                <output expression="i+1 &amp; &quot; &quot; &amp; NC[l]" newline="True"/>
+            </for>
+            <comment text="Comprare i numeri, se trova un numero uguale, allora dovr&#224; fare in qualche modo farlo inserire nel quarto vettore, i numeri, mentre nel 3 i numeri non duplicati"/>
+            <declare name="trovato" type="Integer" array="False" size=""/>
+            <comment text="ND = Numeri Distinti&#13;&#10;NDT = Numeri Duplicati Trovati"/>
+            <declare name="ND" type="Integer" array="True" size="dim"/>
+            <declare name="NDT" type="Integer" array="True" size="dim"/>
+            <assign variable="l" expression="0"/>
+            <assign variable="j" expression="0"/>
+            <for variable="i" start="0" end="dim-1" direction="inc" step="1">
+                <while expression="j&lt;=dim-2">
+                    <if expression="N[i] = N[j+1]">
+                        <then>
+                            <assign variable="NDT[l]" expression="N[i]"/>
+                            <assign variable="l" expression="l+1"/>
+                            <assign variable="j" expression="dim"/>
+                        </then>
+                        <else/>
+                    </if>
+                    <assign variable="j" expression="j+1"/>
+                </while>
+                <assign variable="j" expression="i+1"/>
+            </for>
+            <output expression="&quot;Numeri duplicati trovati: &quot;" newline="True"/>
+            <for variable="i" start="0" end="l-1" direction="inc" step="1">
+                <output expression="NDT[i] &amp; &quot; &quot;" newline="False"/>
+            </for>
+        </body>
+    </function>
+</flowgorithm>

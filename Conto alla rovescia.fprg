@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="LabInfo"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-11-08 01:44:43 "/>
+        <attribute name="created" value="TGFiSW5mbztJTkZPMS1BTFUwODsyMDIzLTExLTA4OyIwMToyOTo1NCAiOzI1ODQ="/>
+        <attribute name="edited" value="TGFiSW5mbztJTkZPMS1BTFUwODsyMDIzLTExLTA4OyIwMTo0NDo0MyAiOzI7MjY4OA=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="N" type="Integer" array="False" size=""/>
+            <output expression="&quot;Dammi il numero da cui fare il conto alla rovescia, deve essere minore di 20 il numero inserito.&quot;" newline="True"/>
+            <input variable="N"/>
+            <while expression="N&lt;0 || N&gt;19">
+                <output expression="&quot;Numero inserito non valido, riprovare.&quot;" newline="True"/>
+                <input variable="N"/>
+            </while>
+            <output expression="&quot;Il conto alla rovescia &#232; iniziato!&quot;" newline="True"/>
+            <while expression="N&gt;0">
+                <assign variable="N" expression="N-1"/>
+                <output expression="N" newline="True"/>
+            </while>
+        </body>
+    </function>
+</flowgorithm>

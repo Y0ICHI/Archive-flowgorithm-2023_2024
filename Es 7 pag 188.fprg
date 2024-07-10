@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Sistema03"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-11-27 12:48:37 "/>
+        <attribute name="created" value="U2lzdGVtYTAzO1NJU1RFTUEwMzsyMDIzLTExLTI3OyIxMjozNTozOCAiOzI2NTM="/>
+        <attribute name="edited" value="U2lzdGVtYTAzO1NJU1RFTUEwMzsyMDIzLTExLTI3OyIxMjo0ODozNyAiOzM7Mjc2Ng=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="NUM, N, C, F, D, L" type="Integer" array="False" size=""/>
+            <output expression="&quot;NUM&quot;" newline="True"/>
+            <input variable="NUM"/>
+            <assign variable="D" expression="0"/>
+            <assign variable="C" expression="0"/>
+            <assign variable="N" expression="0"/>
+            <assign variable="L" expression="0"/>
+            <while expression="D&lt;NUM">
+                <assign variable="L" expression="L+1"/>
+                <output expression="&quot;Tabella &quot; &amp; L" newline="True"/>
+                <while expression="C&lt;10">
+                    <assign variable="N" expression="N+1"/>
+                    <assign variable="F" expression="L*N"/>
+                    <output expression="L &amp; &quot;*&quot; &amp; N &amp;&quot; = &quot; &amp; F" newline="True"/>
+                    <assign variable="C" expression="C+1"/>
+                </while>
+                <assign variable="N" expression="0"/>
+                <assign variable="C" expression="0"/>
+                <assign variable="D" expression="D+1"/>
+            </while>
+        </body>
+    </function>
+</flowgorithm>

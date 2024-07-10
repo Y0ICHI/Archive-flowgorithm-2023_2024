@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="LabInfo"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2024-03-22 12:57:37 "/>
+        <attribute name="created" value="TGFiSW5mbztJTkZPMS1BTFUwNDsyMDI0LTAzLTIyOyIxMTo0NjowNyAiOzI1NzY="/>
+        <attribute name="edited" value="TGFiSW5mbztJTkZPMS1BTFUwNDsyMDI0LTAzLTIyOyIxMjo1NzozNyAiOzM7MjY5Mg=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="n, m, risultato" type="Integer" array="False" size=""/>
+            <output expression="&quot;N&quot;" newline="True"/>
+            <input variable="n"/>
+            <output expression="&quot;m&quot;" newline="True"/>
+            <input variable="m"/>
+            <assign variable="risultato" expression="somma(n, m)"/>
+            <output expression="&quot;Risultato con solo somma: &quot; &amp; risultato" newline="True"/>
+            <assign variable="risultato" expression="sottrazione(n, m)"/>
+            <output expression="&quot;Risultato con solo sottrazione: &quot; &amp; risultato" newline="True"/>
+        </body>
+    </function>
+    <function name="controllosegni" type="Boolean" variable="segno">
+        <parameters>
+            <parameter name="n" type="Integer" array="False"/>
+            <parameter name="m" type="Integer" array="False"/>
+        </parameters>
+        <body>
+            <declare name="segno" type="Boolean" array="False" size=""/>
+            <if expression="n&gt;=0 &amp;&amp; m&gt;=0">
+                <then>
+                    <output expression="&quot;Concordi, cazzo&quot;" newline="True"/>
+                    <assign variable="segno" expression="true"/>
+                </then>
+                <else>
+                    <output expression="&quot;Discordi, cazzo&quot;" newline="True"/>
+                    <assign variable="segno" expression="false"/>
+                </else>
+            </if>
+        </body>
+    </function>
+    <function name="somma" type="Integer" variable="risultato">
+        <parameters>
+            <parameter name="n" type="Integer" array="False"/>
+            <parameter name="m" type="Integer" array="False"/>
+        </parameters>
+        <body>
+            <declare name="risultato" type="Integer" array="False" size=""/>
+            <assign variable="risultato" expression="0"/>
+            <declare name="i" type="Integer" array="False" size=""/>
+            <for variable="i" start="1" end="m" direction="inc" step="1">
+                <assign variable="risultato" expression="risultato+n"/>
+            </for>
+        </body>
+    </function>
+    <function name="sottrazione" type="Integer" variable="conta">
+        <parameters>
+            <parameter name="n" type="Integer" array="False"/>
+            <parameter name="m" type="Integer" array="False"/>
+        </parameters>
+        <body>
+            <declare name="risultato, i, conta" type="Integer" array="False" size=""/>
+            <assign variable="risultato" expression="0"/>
+            <assign variable="conta" expression="0"/>
+            <if expression="controllosegni(n,m)==true">
+                <then>
+                    <for variable="i" start="somma(n,m)" end="2" direction="dec" step="2">
+                        <assign variable="conta" expression="conta+1"/>
+                    </for>
+                </then>
+                <else>
+                    <comment text="discordi, controllare e inserire il segno negativo o positivo"/>
+                </else>
+            </if>
+            <assign variable="conta" expression="conta/2"/>
+        </body>
+    </function>
+</flowgorithm>

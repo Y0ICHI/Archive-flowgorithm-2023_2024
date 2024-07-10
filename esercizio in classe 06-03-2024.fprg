@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="LabInfo"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2024-03-08 12:21:07 "/>
+        <attribute name="created" value="TGFiSW5mbztJTkZPMS1BTFUwNDsyMDI0LTAzLTA2OyIwMToxOTo0MSAiOzI1NzU="/>
+        <attribute name="edited" value="TGFiSW5mbztJTkZPMS1BTFUwNDsyMDI0LTAzLTA4OyIxMjoyMTowNyAiOzI7MjY4Mw=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="vol, Den, pSpe" type="Real" array="False" size=""/>
+            <declare name="risultato1, risultato2" type="Real" array="False" size=""/>
+            <output expression="&quot;Inserire il volume del solido in vetro.&quot;" newline="True"/>
+            <input variable="vol"/>
+            <assign variable="risultato1" expression="CalMass(vol)"/>
+            <assign variable="risultato2" expression="CalPeso(vol)"/>
+            <output expression="&quot;La massa del solido in vetro &#232; &quot; &amp;  risultato1 &amp; &quot; chilogrammi&quot;" newline="True"/>
+            <output expression="&quot;Il peso del solido in vetro &#232; &quot; &amp; risultato2 &amp; &quot; chilogrammi&quot;" newline="True"/>
+        </body>
+    </function>
+    <function name="CalMass" type="Real" variable="massa">
+        <parameters>
+            <parameter name="volume" type="Real" array="False"/>
+        </parameters>
+        <body>
+            <declare name="massa, densita" type="Real" array="False" size=""/>
+            <assign variable="densita" expression="2400"/>
+            <assign variable="massa" expression="densita*volume"/>
+        </body>
+    </function>
+    <function name="CalPeso" type="Real" variable="peso">
+        <parameters>
+            <parameter name="vol" type="Integer" array="False"/>
+        </parameters>
+        <body>
+            <declare name="PesoSpecifico, peso" type="Real" array="False" size=""/>
+            <assign variable="PesoSpecifico" expression="23540"/>
+            <assign variable="peso" expression="PesoSpecifico*vol"/>
+        </body>
+    </function>
+</flowgorithm>

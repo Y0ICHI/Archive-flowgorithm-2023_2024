@@ -1,0 +1,153 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Lupo01"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2024-02-16 04:20:52 "/>
+        <attribute name="created" value="THVwbzAxO0NPTVBVVEVSLUFOVE9OSTsyMDI0LTAyLTE1OyIwNDoyMTo1NCAiOzI4MjU="/>
+        <attribute name="edited" value="THVwbzAxO0NPTVBVVEVSLUFOVE9OSTsyMDI0LTAyLTE1OyIwNjoyMjozMiAiOzM7ZG9jZW50ZTtMQVBUT1AtRjkzS0JNUUs7MjAyNC0wMS0xMTsiMTA6MDQ6MjIgIjtjYW5jZWxsYXppb25lIGRpIHVuIGVsZW1lbnRvIGRpIHVuIHZldHRvcmUuZnByZzsxMDU2MQ=="/>
+        <attribute name="edited" value="TGFiSW5mbztJTkZPMS1BTFUwNDsyMDI0LTAyLTE2OyIxMjo0NjoxNCAiOzE7MjY4NQ=="/>
+        <attribute name="edited" value="THVwbzAxO0NPTVBVVEVSLUFOVE9OSTsyMDI0LTAyLTE2OyIwNDoyMDo1MiAiOzY7MjkzNg=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="LMax, Libri" type="Integer" array="False" size=""/>
+            <assign variable="Libri" expression="50"/>
+            <comment text="Libri= Libri massimi che pu&#242; contenere la libreria&#13;&#10;LMax = Libri che l'utente vuole mettere nella libreria"/>
+            <output expression="&quot;Quanti libri devi mettere?&quot;" newline="True"/>
+            <input variable="LMax"/>
+            <while expression="LMax &lt; 1 || LMax &gt; Libri">
+                <if expression="LMax &gt; Libri">
+                    <then>
+                        <output expression="&quot;Il numero che hai inserito non pu&#242; essere maggiore di &quot; &amp; Libri &amp; &quot;!&quot;" newline="True"/>
+                    </then>
+                    <else>
+                        <output expression="&quot;Il numero che hai inserito non pu&#242; essere minore di 1!&quot;" newline="True"/>
+                    </else>
+                </if>
+                <input variable="LMax"/>
+            </while>
+            <comment text="CL = Codice libro&#13;&#10;NCD = Numero copie disponibili"/>
+            <declare name="CL, NCD" type="Integer" array="True" size="LMax"/>
+            <comment text="Tit = Titolo&#13;&#10;Aut = Autore"/>
+            <declare name="Tit, Aut" type="String" array="True" size="LMax"/>
+            <comment text="i = per le ripetizioni&#13;&#10;trovatoaut = Serve se &#232; stato trovato l'autore&#13;&#10;cercaut = ricerca autore&#13;&#10;stop = serve per fermare la ricerca, dopo che l'utente non ha trovato l'autore che gli interessava.&#13;&#10;scelta = serve per fare decidere all'utente se vuole uscire dalla ricerca&#13;&#10;unacopia = serve per vedere se c'&#232; una solo una copia disponibile tra i libri&#13;&#10;pos =&#13;&#10;j =&#13;&#10;l ="/>
+            <declare name="i, pos, j, l" type="Integer" array="False" size=""/>
+            <assign variable="pos" expression="0"/>
+            <declare name="trovatoaut, stop, unacopia" type="Boolean" array="False" size=""/>
+            <assign variable="stop" expression="false"/>
+            <assign variable="unacopia" expression="false"/>
+            <assign variable="trovatoaut" expression="false"/>
+            <assign variable="l" expression="0"/>
+            <declare name="cercaut, scelta" type="String" array="False" size=""/>
+            <for variable="i" start="0" end="LMax-1" direction="inc" step="1">
+                <output expression="i+1 &amp; &quot; Codice libro.&quot;" newline="True"/>
+                <input variable="CL[i]"/>
+                <output expression="i+1 &amp; &quot; Titolo&quot;" newline="True"/>
+                <input variable="Tit[i]"/>
+                <output expression="i+1 &amp; &quot; Autore&quot;" newline="True"/>
+                <input variable="Aut[i]"/>
+                <output expression="i+1 &amp; &quot; Numero copie disponibili&quot;" newline="True"/>
+                <input variable="NCD[i]"/>
+            </for>
+            <output expression="&quot;Ricapitoliamo i libri che hai inserito nella libreria, inclusi possibili copie mancanti:&quot;" newline="True"/>
+            <for variable="i" start="0" end="LMax-1" direction="inc" step="1">
+                <output expression="&quot;Codice libro: &quot; &amp; CL[i] &amp; &quot; Titolo: &quot; &amp; Tit[i] &amp; &quot; Autore: &quot; &amp; Aut[i] &amp; &quot; Numero copie disponibili: &quot; &amp; NCD[i]" newline="True"/>
+            </for>
+            <while expression="stop = false">
+                <output expression="&quot;Inserire il nome dell'autore da cercare:&quot;" newline="True"/>
+                <input variable="cercaut"/>
+                <for variable="i" start="0" end="LMax-1" direction="inc" step="1">
+                    <if expression="Aut[i] = cercaut">
+                        <then>
+                            <assign variable="trovatoaut" expression="true"/>
+                            <assign variable="stop" expression="true"/>
+                        </then>
+                        <else/>
+                    </if>
+                </for>
+                <if expression="trovatoaut = true">
+                    <then>
+                        <output expression="&quot;Autore trovato! Ecco il libri trovati: &quot;" newline="True"/>
+                        <for variable="i" start="0" end="LMax-1" direction="inc" step="1">
+                            <if expression="Aut[i] = cercaut">
+                                <then>
+                                    <output expression="&quot;Titolo libro: &quot; &amp; Tit[i] &amp; &quot; con &quot; &amp; NCD[i] &amp; &quot; copie disponibili&quot;" newline="True"/>
+                                </then>
+                                <else/>
+                            </if>
+                        </for>
+                    </then>
+                    <else>
+                        <output expression="&quot;Autore non trovato! Finire la ricerca?&quot;" newline="True"/>
+                        <input variable="scelta"/>
+                        <while expression="scelta != &quot;si&quot; &amp;&amp;  scelta != &quot;no&quot;">
+                            <output expression="&quot;Errore. Riprovare.&quot;" newline="True"/>
+                            <input variable="scelta"/>
+                        </while>
+                        <if expression="scelta = &quot;si&quot;">
+                            <then>
+                                <assign variable="stop" expression="true"/>
+                            </then>
+                            <else/>
+                        </if>
+                    </else>
+                </if>
+            </while>
+            <for variable="i" start="0" end="LMax-1" direction="inc" step="1">
+                <if expression="NCD[i] = 1">
+                    <then>
+                        <assign variable="unacopia" expression="true"/>
+                    </then>
+                    <else/>
+                </if>
+            </for>
+            <if expression="unacopia = true">
+                <then>
+                    <output expression="&quot;Tutti i libri che hanno solo una copia rimantente.&quot;" newline="True"/>
+                    <for variable="i" start="0" end="LMax-1" direction="inc" step="1">
+                        <if expression="NCD[i] = 1">
+                            <then>
+                                <output expression="&quot;Titolo: &quot; &amp; Tit[i] &amp; &quot; Autore: &quot; &amp; aut[i]" newline="True"/>
+                            </then>
+                            <else/>
+                        </if>
+                    </for>
+                </then>
+                <else/>
+            </if>
+            <comment text="Step 4 completato!"/>
+            <for variable="i" start="0" end="LMax-1" direction="inc" step="1">
+                <if expression="NCD[i]=0">
+                    <then>
+                        <assign variable="l" expression="l+1"/>
+                    </then>
+                    <else/>
+                </if>
+            </for>
+            <if expression="l!=0">
+                <then>
+                    <output expression="&quot;Sono state trovati &quot; &amp; l &amp; &quot; libri con 0 copie!&quot;" newline="True"/>
+                    <for variable="i" start="0" end="LMax-1" direction="inc" step="1">
+                        <if expression="NCD[i]=0">
+                            <then>
+                                <output expression="i+1 &amp; &quot; Codice libro.&quot;" newline="True"/>
+                                <input variable="CL[i]"/>
+                                <output expression="i+1 &amp; &quot; Titolo&quot;" newline="True"/>
+                                <input variable="Tit[i]"/>
+                                <output expression="i+1 &amp; &quot; Autore&quot;" newline="True"/>
+                                <input variable="Aut[i]"/>
+                                <output expression="i+1 &amp; &quot; Numero copie disponibili&quot;" newline="True"/>
+                                <input variable="NCD[i]"/>
+                            </then>
+                            <else/>
+                        </if>
+                    </for>
+                </then>
+                <else/>
+            </if>
+        </body>
+    </function>
+</flowgorithm>

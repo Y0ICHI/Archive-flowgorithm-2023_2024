@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="LabInfo"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2024-01-24 01:41:13 "/>
+        <attribute name="created" value="TGFiSW5mbztJTkZPMS1BTFUwNDsyMDI0LTAxLTI0OyIwMToxNDo1MSAiOzI1Njk="/>
+        <attribute name="edited" value="TGFiSW5mbztJTkZPMS1BTFUwNDsyMDI0LTAxLTI0OyIwMTo0MToxMyAiOzE7MjY3NQ=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="dim, i, somma, media, min, max" type="Integer" array="False" size=""/>
+            <assign variable="dim" expression="100"/>
+            <declare name="N" type="Integer" array="True" size="dim"/>
+            <for variable="i" start="0" end="dim-1" direction="inc" step="1">
+                <assign variable="N[i]" expression="Random(100)+1"/>
+                <output expression="&quot;Debug: &quot; &amp; N[i]" newline="True"/>
+            </for>
+            <assign variable="somma" expression="N[0]"/>
+            <for variable="i" start="1" end="dim-1" direction="inc" step="1">
+                <assign variable="somma" expression="somma+N[i]"/>
+            </for>
+            <output expression="&quot;La somma &#232; uguale a: &quot; &amp; somma" newline="True"/>
+            <assign variable="media" expression="somma/dim"/>
+            <output expression="&quot;La media &#232;: &quot; &amp; media" newline="True"/>
+            <assign variable="max" expression="0"/>
+            <assign variable="min" expression="N[0]"/>
+            <for variable="i" start="0" end="dim-1" direction="inc" step="1">
+                <if expression="N[i]&gt;max">
+                    <then>
+                        <assign variable="max" expression="N[i]"/>
+                    </then>
+                    <else/>
+                </if>
+                <if expression="N[i]&lt;min">
+                    <then>
+                        <assign variable="min" expression="N[i]"/>
+                    </then>
+                    <else/>
+                </if>
+            </for>
+            <output expression="&quot;Il numero massimo &#232;: &quot; &amp; max" newline="True"/>
+            <output expression="&quot;Il numero minimo &#232;: &quot; &amp; min" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>

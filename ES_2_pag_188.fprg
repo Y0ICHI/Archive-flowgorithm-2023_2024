@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Sistema03"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-11-20 12:49:22 "/>
+        <attribute name="created" value="U2lzdGVtYTAzO1NJU1RFTUEwMzsyMDIzLTExLTIwOyIxMjo0MDo0MCAiOzI2MzU="/>
+        <attribute name="edited" value="U2lzdGVtYTAzO1NJU1RFTUEwMzsyMDIzLTExLTIwOyIxMjo0OToyMiAiOzE7Mjc1Mg=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="NUM, sott, C" type="Integer" array="False" size=""/>
+            <output expression="&quot;NUM&quot;" newline="True"/>
+            <input variable="NUM"/>
+            <assign variable="sott" expression="NUM"/>
+            <while expression="NUM&gt;0">
+                <assign variable="NUM" expression="NUM-2"/>
+            </while>
+            <if expression="NUM=0">
+                <then>
+                    <assign variable="NUM" expression="sott"/>
+                </then>
+                <else>
+                    <breakpoint expression="" always="True"/>
+                </else>
+            </if>
+            <for variable="NUM" start="NUM" end="0" direction="dec" step="2">
+                <output expression="NUM" newline="True"/>
+            </for>
+        </body>
+    </function>
+</flowgorithm>

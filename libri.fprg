@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Lupo01"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2024-01-11 06:56:04 "/>
+        <attribute name="created" value="THVwbzAxO0NPTVBVVEVSLUFOVE9OSTsyMDI0LTAxLTExOyIwMzo1OTo1NyAiOzI4MzM="/>
+        <attribute name="edited" value="THVwbzAxO0NPTVBVVEVSLUFOVE9OSTsyMDI0LTAxLTExOyIwNTo1NjowNiAiOzY7ZG9jZW50ZTtMQVBUT1AtRjkzS0JNUUs7MjAyNC0wMS0xMTsiMTA6MDQ6MjIgIjtjYW5jZWxsYXppb25lIGRpIHVuIGVsZW1lbnRvIGRpIHVuIHZldHRvcmUuZnByZzsxMDU2Ng=="/>
+        <attribute name="edited" value="THVwbzAxO0NPTVBVVEVSLUFOVE9OSTsyMDI0LTAxLTExOyIwNjo1NjowNCAiOzE7MjkzMw=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="i, dim, cmax, cmin, max, min" type="Integer" array="False" size=""/>
+            <assign variable="max" expression="0"/>
+            <assign variable="min" expression="9999999999999999"/>
+            <assign variable="cmin" expression="9999999999999999"/>
+            <assign variable="dim" expression="10"/>
+            <assign variable="cmax" expression="0"/>
+            <declare name="codice" type="Integer" array="True" size="dim"/>
+            <for variable="i" start="0" end="dim-1" direction="inc" step="1">
+                <input variable="codice[i]"/>
+            </for>
+            <declare name="prezzo" type="Real" array="True" size="dim"/>
+            <for variable="i" start="0" end="dim-1" direction="inc" step="1">
+                <output expression="&quot;Qual'&#232; il prezzo del prodotto numero &quot; &amp; i+1 &amp; &quot;, con il codice &quot; &amp; codice[i] &amp; &quot;?&quot;" newline="True"/>
+                <input variable="prezzo[i]"/>
+            </for>
+            <output expression="&quot;Lista:&quot;" newline="True"/>
+            <for variable="i" start="0" end="dim-1" direction="inc" step="1">
+                <output expression="&quot;Libro: &quot; &amp; i+1 &amp;&quot;.&quot; &amp; &quot; Codice: &quot; &amp; codice[i] &amp; &quot; Prezzo: &quot; &amp; prezzo[i]" newline="True"/>
+            </for>
+            <for variable="i" start="0" end="dim-1" direction="inc" step="1">
+                <if expression="prezzo[i]&gt;max">
+                    <then>
+                        <assign variable="max" expression="codice[i]"/>
+                        <assign variable="cmax" expression="prezzo[i]"/>
+                    </then>
+                    <else/>
+                </if>
+                <if expression="prezzo[i]&lt;min">
+                    <then>
+                        <assign variable="min" expression="codice[i]"/>
+                        <assign variable="cmin" expression="prezzo[i]"/>
+                    </then>
+                    <else/>
+                </if>
+            </for>
+            <declare name="input" type="Integer" array="True" size="2"/>
+            <output expression="&quot;Inserire il prezzo del libro che deve avere come minimo.&quot;" newline="True"/>
+            <input variable="input[0]"/>
+            <output expression="&quot;Inserire il prezzo del libro che deve avere come massimo.&quot;" newline="True"/>
+            <input variable="input[1]"/>
+            <output expression="&quot;Ecco il codice e il prezzo dei libri tra i prezzi inseriti: &quot;" newline="True"/>
+            <for variable="i" start="0" end="dim-1" direction="inc" step="1">
+                <if expression="prezzo[i] &gt;= input[0] &amp;&amp; prezzo[i] &lt;= input[1]">
+                    <then>
+                        <output expression="&quot;Codice libro: &quot; &amp; codice[i] &amp; &quot; Prezzo libro: &quot; &amp; prezzo[i]" newline="True"/>
+                    </then>
+                    <else/>
+                </if>
+            </for>
+            <declare name="cercato, pos" type="Integer" array="False" size=""/>
+            <input variable="cercato"/>
+            <assign variable="pos" expression="-1"/>
+            <for variable="i" start="0" end="dim-1" direction="inc" step="1">
+                <if expression="cercato = codice[i]">
+                    <then>
+                        <assign variable="pos" expression="i"/>
+                        <assign variable="i" expression="dim"/>
+                    </then>
+                    <else/>
+                </if>
+            </for>
+            <if expression="pos &lt;&gt; -1">
+                <then>
+                    <for variable="i" start="pos" end="dim-2" direction="inc" step="1">
+                        <assign variable="codice[i]" expression="codice[i+1]"/>
+                        <assign variable="prezzo[i]" expression="prezzo[i+1]"/>
+                    </for>
+                    <assign variable="dim" expression="dim-1"/>
+                    <output expression="&quot;Il libro numero &quot; &amp; pos+1 &amp; &quot;&#232; stato tolto e ripiazzato, ecco la nuova lista&quot;" newline="True"/>
+                    <for variable="i" start="0" end="dim-1" direction="inc" step="1">
+                        <output expression="&quot;Libro: &quot; &amp; i+1 &amp;&quot;.&quot; &amp; &quot; Codice: &quot; &amp; codice[i] &amp; &quot; Prezzo: &quot; &amp; prezzo[i]" newline="True"/>
+                    </for>
+                </then>
+                <else>
+                    <output expression="&quot;Il codice del libro non &#232; presente nell'elenco&quot;" newline="True"/>
+                </else>
+            </if>
+        </body>
+    </function>
+</flowgorithm>

@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="LabInfo"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2024-03-15 12:27:40 "/>
+        <attribute name="created" value="TGFiSW5mbztJTkZPMS1BTFUwNDsyMDI0LTAzLTE1OyIxMjoyMDo1NSAiOzI1NzQ="/>
+        <attribute name="edited" value="TGFiSW5mbztJTkZPMS1BTFUwNDsyMDI0LTAzLTE1OyIxMjoyNzo0MCAiOzI7MjY4NA=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body/>
+    </function>
+    <function name="NewSelectionSort" type="None" variable="">
+        <parameters>
+            <parameter name="A" type="Integer" array="True"/>
+            <parameter name="n" type="Integer" array="False"/>
+        </parameters>
+        <body>
+            <declare name="i, j, posMin, temp" type="Integer" array="False" size=""/>
+            <for variable="i" start="0" end="n-1" direction="inc" step="1">
+                <assign variable="posMin" expression="i"/>
+                <for variable="j" start="i+1" end="n-1" direction="inc" step="1">
+                    <if expression="A[j]&lt;A[posMin]">
+                        <then>
+                            <assign variable="posMin" expression="j"/>
+                        </then>
+                        <else/>
+                    </if>
+                </for>
+                <assign variable="temp" expression="A[posMin]"/>
+                <assign variable="A[i]" expression="A[PosMin]"/>
+                <assign variable="A[posMin]" expression="temp"/>
+            </for>
+        </body>
+    </function>
+</flowgorithm>

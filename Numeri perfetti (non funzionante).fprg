@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Lupo01"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-11-30 07:44:04 "/>
+        <attribute name="created" value="THVwbzAxO0NPTVBVVEVSLUFOVE9OSTsyMDIzLTExLTMwOyIwNjo0MDozNCAiOzI4MjI="/>
+        <attribute name="edited" value="THVwbzAxO0NPTVBVVEVSLUFOVE9OSTsyMDIzLTExLTMwOyIwNzo0NDowNCAiOzE7MjkzMg=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="NP, N, S, i" type="Integer" array="False" size=""/>
+            <assign variable="NP" expression="0"/>
+            <assign variable="i" expression="0"/>
+            <while expression="NP&lt;3">
+                <output expression="&quot;N&quot;" newline="True"/>
+                <input variable="N"/>
+                <while expression="N&lt;=0">
+                    <output expression="&quot;Errore&quot;" newline="True"/>
+                    <input variable="N"/>
+                </while>
+                <assign variable="S" expression="0"/>
+                <for variable="i" start="1" end="N" direction="inc" step="1">
+                    <if expression="N%i=0">
+                        <then>
+                            <assign variable="S" expression="S+1"/>
+                        </then>
+                        <else/>
+                    </if>
+                </for>
+                <if expression="S=N">
+                    <then>
+                        <output expression="&quot;Numero &quot; &amp; N &amp; &quot; perfetto&quot;" newline="True"/>
+                        <assign variable="NP" expression="NP+1"/>
+                    </then>
+                    <else>
+                        <output expression="&quot;Numero &quot; &amp; N &amp; &quot; non perfetto&quot;" newline="True"/>
+                    </else>
+                </if>
+            </while>
+        </body>
+    </function>
+</flowgorithm>

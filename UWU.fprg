@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="LabInfo"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-11-23 04:13:52 "/>
+        <attribute name="created" value="TGFiSW5mbztJTkZPMS1BTFUwODsyMDIzLTExLTIyOyIwMTozNTo1NSAiOzI1Nzg="/>
+        <attribute name="edited" value="TGFiSW5mbztJTkZPMS1BTFUwODsyMDIzLTExLTIyOyIwMTo0ODoyMSAiOzE7MjY4Mw=="/>
+        <attribute name="edited" value="THVwbzAxO0NPTVBVVEVSLUFOVE9OSTsyMDIzLTExLTIzOyIwNDoxMzo1MiAiOzE7MjkzMA=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="N, C" type="Integer" array="False" size=""/>
+            <assign variable="N" expression="1"/>
+            <assign variable="C" expression="0"/>
+            <while expression="C&lt;=5">
+                <output expression="N &amp; &quot; &quot;" newline="False"/>
+                <assign variable="N" expression="N+2"/>
+                <assign variable="C" expression="C+1"/>
+            </while>
+            <while expression="N&lt;99">
+                <assign variable="C" expression="0"/>
+                <output expression="&quot; &quot;" newline="True"/>
+                <while expression="C&lt;=5">
+                    <if expression="N&gt;=99">
+                        <then>
+                            <assign variable="C" expression="100"/>
+                        </then>
+                        <else/>
+                    </if>
+                    <output expression="N &amp; &quot; &quot;" newline="False"/>
+                    <assign variable="N" expression="N+2"/>
+                    <assign variable="C" expression="C+1"/>
+                </while>
+            </while>
+        </body>
+    </function>
+</flowgorithm>

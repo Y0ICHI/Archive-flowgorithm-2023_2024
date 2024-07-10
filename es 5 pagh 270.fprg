@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Lupo01"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2024-01-26 12:16:55 "/>
+        <attribute name="created" value="THVwbzAxO0NPTVBVVEVSLUFOVE9OSTsyMDI0LTAxLTI1OyIwNDo1MToxNyAiOzI4Mjc="/>
+        <attribute name="edited" value="THVwbzAxO0NPTVBVVEVSLUFOVE9OSTsyMDI0LTAxLTI1OyIwNjozNTo1MyAiOzE7MjkzOQ=="/>
+        <attribute name="edited" value="TGFiSW5mbztJTkZPMS1BTFUwNDsyMDI0LTAxLTI2OyIxMjoxNjo1NSAiOzI7MjY4OA=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="dim, i, l, m, C, d" type="Integer" array="False" size=""/>
+            <assign variable="dim" expression="Random(100)"/>
+            <assign variable="dim" expression="6*3"/>
+            <if expression="dim%6==0">
+                <then/>
+                <else>
+                    <while expression="dim%6!=0 or dim==0">
+                        <assign variable="dim" expression="Random(100)"/>
+                    </while>
+                </else>
+            </if>
+            <output expression="&quot;Numero biglietti: &quot; &amp; dim/6" newline="True"/>
+            <declare name="N" type="Integer" array="True" size="dim"/>
+            <declare name="somma" type="Integer" array="True" size="(dim/6)*2"/>
+            <assign variable="i" expression="0"/>
+            <assign variable="d" expression="6"/>
+            <for variable="l" start="0" end="(dim/6)-1" direction="inc" step="1">
+                <while expression="i&lt;=d-1">
+                    <assign variable="N[i]" expression="Random(8)+1"/>
+                    <output expression="N[i]" newline="False"/>
+                    <assign variable="i" expression="i+1"/>
+                </while>
+                <output expression="&quot; &quot;" newline="True"/>
+                <assign variable="d" expression="d+6"/>
+            </for>
+            <assign variable="m" expression="0"/>
+            <assign variable="i" expression="0"/>
+            <assign variable="c" expression="0"/>
+            <comment text="somma&#13;&#10;&#13;&#10;somma dichiarato come vettore, dopo avere fatto la prima somma e la seconda somma, controlli che siano dello stesso valore."/>
+            <for variable="l" start="0" end="(dim/6)-1" direction="inc" step="1">
+                <assign variable="somma[c]" expression="0"/>
+                <while expression="i&lt;m+3">
+                    <output expression="N[i]" newline="True"/>
+                    <assign variable="somma[c]" expression="somma[c]+N[i]"/>
+                    <assign variable="i" expression="i+1"/>
+                </while>
+                <output expression="&quot;Somma: &quot; &amp; somma[c]" newline="True"/>
+                <assign variable="m" expression="m+6"/>
+                <assign variable="c" expression="c+1"/>
+                <assign variable="i" expression="i+3"/>
+                <assign variable="somma[c]" expression="0"/>
+                <while expression="i&lt;m+3">
+                    <assign variable="somma[c]" expression="somma[c]+N[i]"/>
+                    <assign variable="i" expression="i+1"/>
+                </while>
+                <output expression="&quot;Somma: &quot; &amp; somma[c]" newline="True"/>
+            </for>
+        </body>
+    </function>
+</flowgorithm>

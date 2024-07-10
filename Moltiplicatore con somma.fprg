@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Lupo01"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-11-09 04:24:54 "/>
+        <attribute name="created" value="THVwbzAxO0NPTVBVVEVSLUFOVE9OSTsyMDIzLTExLTA5OyIwNDoxODoyMCAiOzI4MjY="/>
+        <attribute name="edited" value="THVwbzAxO0NPTVBVVEVSLUFOVE9OSTsyMDIzLTExLTA5OyIwNDoyNDo1NCAiOzE7MjkzOA=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="N1, N2, N3, C" type="Integer" array="False" size=""/>
+            <assign variable="C" expression="1"/>
+            <output expression="&quot;N1&quot;" newline="True"/>
+            <input variable="N1"/>
+            <output expression="&quot;N2&quot;" newline="True"/>
+            <input variable="N2"/>
+            <while expression="N1&lt;0 || N2&lt;0">
+                <output expression="&quot;VNV RP N1&quot;" newline="True"/>
+                <input variable="N1"/>
+                <output expression="&quot;N2&quot;" newline="True"/>
+                <input variable="N2"/>
+            </while>
+            <assign variable="N3" expression="N1"/>
+            <while expression="C&lt;N2">
+                <assign variable="C" expression="C+1"/>
+                <assign variable="N1" expression="N1+N3"/>
+            </while>
+            <output expression="N1" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>

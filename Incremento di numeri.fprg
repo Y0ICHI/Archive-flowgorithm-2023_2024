@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="LabInfo"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2024-03-08 11:55:28 "/>
+        <attribute name="created" value="TGFiSW5mbztJTkZPMS1BTFUwNDsyMDI0LTAzLTA4OyIxMTozOTozNiAiOzI1ODQ="/>
+        <attribute name="edited" value="TGFiSW5mbztJTkZPMS1BTFUwNDsyMDI0LTAzLTA4OyIxMTo1NToyOCAiOzE7MjY5MQ=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="num" type="Integer" array="False" size=""/>
+            <declare name="perc, NumIncrem" type="Real" array="False" size=""/>
+            <output expression="&quot;Inserire un numero intero: &quot;" newline="True"/>
+            <input variable="num"/>
+            <output expression="&quot;Di che percentuale lo vuoi incrementare?&quot;" newline="True"/>
+            <input variable="perc"/>
+            <assign variable="NumIncrem" expression="Incremento(num, perc)"/>
+            <output expression="&quot;Il numero &quot; &amp; num &amp; &quot; &#232; incrementato del &quot; &amp; perc &amp; &quot;%&quot; &amp; &quot; &#232; &quot; &amp; NumIncrem" newline="True"/>
+        </body>
+    </function>
+    <function name="Incremento" type="Real" variable="Incrementi">
+        <parameters>
+            <parameter name="numero" type="Integer" array="False"/>
+            <parameter name="percentuale" type="Real" array="False"/>
+        </parameters>
+        <body>
+            <declare name="Incrementi" type="Real" array="False" size=""/>
+            <assign variable="incrementi" expression="numero+(numero*percentuale/100)"/>
+        </body>
+    </function>
+</flowgorithm>

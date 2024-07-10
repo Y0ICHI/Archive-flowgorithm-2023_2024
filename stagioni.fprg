@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Lupo01"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-10-02 10:31:35 "/>
+        <attribute name="created" value="THVwbzAxO0NPTVBVVEVSLUFOVE9OSTsyMDIzLTEwLTAyOyIwOTo0OTo0MSAiOzI4MzA="/>
+        <attribute name="edited" value="THVwbzAxO0NPTVBVVEVSLUFOVE9OSTsyMDIzLTEwLTAyOyIxMDozMTozNSAiOzE7MjkyNA=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="numes, numgio" type="Real" array="False" size=""/>
+            <output expression="&quot;Dimmi il mese in numero e io ti dir&#242; la stagione corrispondente al mese&quot;" newline="True"/>
+            <input variable="numes"/>
+            <if expression="numes &gt;= 1 &amp;&amp; numes &lt;= 2">
+                <then>
+                    <output expression="&quot;la stagione &#232; inverno&quot;" newline="True"/>
+                </then>
+                <else>
+                    <if expression="numes = 3">
+                        <then>
+                            <output expression="&quot;Potresti dirmi il giorno?&quot;" newline="True"/>
+                            <input variable="numgio"/>
+                            <if expression="numgio &gt;= 0 &amp;&amp; numgio  &lt;= 20">
+                                <then>
+                                    <output expression="&quot;La stagione &#232; inverno&quot;" newline="True"/>
+                                </then>
+                                <else>
+                                    <output expression="&quot;La stagione &#232; primavera&quot;" newline="True"/>
+                                </else>
+                            </if>
+                        </then>
+                        <else>
+                            <if expression="numes &gt;= 4 &amp;&amp; numes &lt;= 5">
+                                <then>
+                                    <output expression="&quot;La stagione &#232; primavera&quot;" newline="True"/>
+                                </then>
+                                <else>
+                                    <if expression="numes = 6">
+                                        <then>
+                                            <output expression="&quot;Potresti dirmi il giorno?&quot;" newline="True"/>
+                                            <input variable="numgio"/>
+                                            <if expression="numgio &gt;= 0 &amp;&amp; numgio  &lt;= 20">
+                                                <then>
+                                                    <output expression="&quot;La stagione &#232; primavera&quot;" newline="True"/>
+                                                </then>
+                                                <else>
+                                                    <output expression="&quot;La stagione &#232; estate&quot;" newline="True"/>
+                                                </else>
+                                            </if>
+                                        </then>
+                                        <else>
+                                            <if expression="numes &gt;=7 &amp;&amp; numes &lt;= 8">
+                                                <then>
+                                                    <output expression="&quot;La stagione &#232; estate&quot;" newline="True"/>
+                                                </then>
+                                                <else>
+                                                    <if expression="numes = 9">
+                                                        <then>
+                                                            <output expression="&quot;Potresti dirmi il giorno?&quot;" newline="True"/>
+                                                            <input variable="numgio"/>
+                                                            <if expression="numgio &gt;= 0 &amp;&amp; numgio  &lt;= 20">
+                                                                <then>
+                                                                    <output expression="&quot;La stagione &#232; estate&quot;" newline="True"/>
+                                                                </then>
+                                                                <else>
+                                                                    <output expression="&quot;La stagione &#232; autunno&quot;" newline="True"/>
+                                                                </else>
+                                                            </if>
+                                                        </then>
+                                                        <else>
+                                                            <if expression="numes &gt;= 10 &amp;&amp; numes &lt;= 11">
+                                                                <then>
+                                                                    <output expression="&quot;La stagione &#232; autunno&quot;" newline="True"/>
+                                                                </then>
+                                                                <else>
+                                                                    <if expression="numes = 12">
+                                                                        <then>
+                                                                            <output expression="&quot;Potresti dirmi il giorno?&quot;" newline="True"/>
+                                                                            <input variable="numgio"/>
+                                                                            <if expression="numgio &gt;= 0 &amp;&amp; numgio  &lt;= 20">
+                                                                                <then>
+                                                                                    <output expression="&quot;La stagione &#232; autunno&quot;" newline="True"/>
+                                                                                </then>
+                                                                                <else>
+                                                                                    <output expression="&quot;La stagione &#232; inverno&quot;" newline="True"/>
+                                                                                </else>
+                                                                            </if>
+                                                                        </then>
+                                                                        <else/>
+                                                                    </if>
+                                                                </else>
+                                                            </if>
+                                                        </else>
+                                                    </if>
+                                                </else>
+                                            </if>
+                                        </else>
+                                    </if>
+                                </else>
+                            </if>
+                        </else>
+                    </if>
+                </else>
+            </if>
+        </body>
+    </function>
+</flowgorithm>

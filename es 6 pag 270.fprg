@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Lupo01"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2024-01-15 04:21:44 "/>
+        <attribute name="created" value="THVwbzAxO0NPTVBVVEVSLUFOVE9OSTsyMDI0LTAxLTE1OyIwMjo1NzozNSAiOzI4MzA="/>
+        <attribute name="edited" value="THVwbzAxO0NPTVBVVEVSLUFOVE9OSTsyMDI0LTAxLTE1OyIwNDoyMTo0NCAiOzE7MjkzMQ=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="dim, max, min, media, i" type="Integer" array="False" size=""/>
+            <assign variable="dim" expression="12"/>
+            <assign variable="max" expression="0"/>
+            <assign variable="media" expression="0"/>
+            <declare name="mesi" type="Integer" array="True" size="dim"/>
+            <declare name="presenza" type="Integer" array="True" size="dim"/>
+            <output expression="&quot;Lista presenze in tutto l'anno.&quot;" newline="True"/>
+            <for variable="i" start="0" end="dim-1" direction="inc" step="1">
+                <assign variable="presenza[i]" expression="Random(100)+20"/>
+                <output expression="i+1 &amp; &quot; &quot; &amp; presenza[i]" newline="True"/>
+            </for>
+            <assign variable="min" expression="presenza[1]"/>
+            <for variable="i" start="0" end="dim-1" direction="inc" step="1">
+                <assign variable="media" expression="media+presenza[i]"/>
+            </for>
+            <assign variable="media" expression="media/dim"/>
+            <output expression="&quot;Media presenze dell'intero anno: &quot; &amp; media" newline="True"/>
+            <assign variable="media" expression="0"/>
+            <for variable="i" start="6-1" end="8-1" direction="inc" step="1">
+                <assign variable="media" expression="media+presenza[i]"/>
+            </for>
+            <assign variable="media" expression="media/3"/>
+            <output expression="&quot;Presenze nei mesi estivi: &quot; &amp; media" newline="True"/>
+            <for variable="i" start="0" end="dim-1" direction="inc" step="1">
+                <if expression="max&lt;presenza[i]">
+                    <then>
+                        <assign variable="max" expression="presenza[i]"/>
+                    </then>
+                    <else/>
+                </if>
+                <if expression="min&gt;presenza[i]">
+                    <then>
+                        <assign variable="min" expression="presenza[i]"/>
+                    </then>
+                    <else/>
+                </if>
+            </for>
+            <output expression="&quot;Max presenze: &quot; &amp; max &amp; &quot; Min presenze: &quot; &amp; min" newline="True"/>
+            <assign variable="media" expression="0"/>
+            <for variable="i" start="0" end="dim-1" direction="inc" step="1">
+                <if expression="i&gt;=6-1 and i&lt;=8-1">
+                    <then/>
+                    <else>
+                        <assign variable="media" expression="media+presenza[i]"/>
+                    </else>
+                </if>
+            </for>
+            <assign variable="media" expression="media/dim-3"/>
+            <output expression="&quot;Media presenze, esclusi i mesi estivi: &quot; &amp; media" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>

@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Lupo01"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-10-18 05:42:01 "/>
+        <attribute name="created" value="THVwbzAxO0NPTVBVVEVSLUFOVE9OSTsyMDIzLTEwLTE4OyIwNToyMjoxNCAiOzI4MjQ="/>
+        <attribute name="edited" value="THVwbzAxO0NPTVBVVEVSLUFOVE9OSTsyMDIzLTEwLTE4OyIwNTo0MjowMSAiOzE7MjkzMA=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="N, X, C" type="Integer" array="False" size=""/>
+            <output expression="&quot;1&quot;" newline="True"/>
+            <input variable="N"/>
+            <output expression="&quot;2&quot;" newline="True"/>
+            <input variable="X"/>
+            <while expression="x&gt;N">
+                <output expression="&quot;2 + richiesta&quot;" newline="True"/>
+                <input variable="x"/>
+            </while>
+            <assign variable="C" expression="0"/>
+            <while expression="N&gt;=0">
+                <assign variable="N" expression="N-x"/>
+                <assign variable="C" expression="C + 1"/>
+                <output expression="N" newline="True"/>
+            </while>
+            <output expression="&quot;si deve sottrarre &quot; &amp; C &amp; &quot; volte&quot;" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>

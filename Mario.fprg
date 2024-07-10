@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="LabInfo"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-11-12 12:19:05 "/>
+        <attribute name="created" value="TGFiSW5mbztJTkZPMS1BTFUyMjsyMDIzLTExLTEwOyIxMjo0MzoxMSAiOzI1NjQ="/>
+        <attribute name="edited" value="TGFiSW5mbztJTkZPMS1BTFUyMjsyMDIzLTExLTEwOyIxMjo1NDozNyAiOzE7MjY4Mg=="/>
+        <attribute name="edited" value="THVwbzAxO0NPTVBVVEVSLUFOVE9OSTsyMDIzLTExLTEyOyIxMjoxOTowNSAiOzE7MjkzMQ=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="CM, CPas, CPan, N, CostPas" type="Integer" array="False" size=""/>
+            <declare name="soldi, CostPan" type="Real" array="False" size=""/>
+            <output expression="&quot;soldi&quot;" newline="True"/>
+            <input variable="soldi"/>
+            <while expression="soldi&lt;=0">
+                <output expression="&quot;Hai inserito un numero non valido di soldi, inserirne uno nuovo, per favore.&quot;" newline="True"/>
+                <input variable="soldi"/>
+            </while>
+            <output expression="&quot;Primo giorno! Cosa vuoi fare mangiare a Mario?&quot;" newline="True"/>
+            <output expression="&quot;scrivi 1 per indicare il panino (1.5&#8364;), 2 per indicare pastina (1&#8364;)&quot;" newline="True"/>
+            <input variable="N"/>
+            <if expression="N&lt;1 || N&gt;2">
+                <then>
+                    <while expression="N&lt;1 || N&gt;2">
+                        <output expression="&quot;VNV, RIP&quot;" newline="True"/>
+                        <input variable="N"/>
+                    </while>
+                </then>
+                <else/>
+            </if>
+            <assign variable="CPas" expression="0"/>
+            <assign variable="CPan" expression="0"/>
+            <assign variable="CostPan" expression="1.5"/>
+            <assign variable="CostPas" expression="1"/>
+            <if expression="N=1">
+                <then>
+                    <assign variable="soldi" expression="soldi-CostPan"/>
+                    <assign variable="CPan" expression="CPan+1"/>
+                </then>
+                <else>
+                    <assign variable="soldi" expression="soldi-CostPas"/>
+                    <assign variable="CPas" expression="CPas+1"/>
+                </else>
+            </if>
+            <assign variable="CM" expression="1"/>
+            <while expression="soldi&gt;0">
+                <output expression="&quot;Nuovo giorno! Cosa vuoi fare mangiare a Mario?&quot;" newline="True"/>
+                <output expression="&quot;Piccolo reminder: 1 per panino (costo 1.5&#8364;), 2 per pastina (costo 1&#8364;)&quot;" newline="True"/>
+                <input variable="N"/>
+                <while expression="N&lt;1 || N&gt;2">
+                    <output expression="&quot;VNV, RIP&quot;" newline="True"/>
+                    <input variable="N"/>
+                </while>
+                <if expression="N=1">
+                    <then>
+                        <if expression="soldi&lt;CostPan">
+                            <then>
+                                <assign variable="soldi" expression="soldi-CostPan"/>
+                                <output expression="&quot;Oh no! Sembra che non hai pi&#249; soldi neccesari! Eccoti un recap di tutto quello che hai fatto mangiare a Mario.&quot;" newline="True"/>
+                            </then>
+                            <else>
+                                <assign variable="soldi" expression="soldi-CostPan"/>
+                                <assign variable="CPan" expression="CPan+1"/>
+                                <assign variable="CM" expression="CM+1"/>
+                            </else>
+                        </if>
+                    </then>
+                    <else>
+                        <if expression="soldi&lt;CostPas">
+                            <then>
+                                <assign variable="soldi" expression="soldi-CostPas"/>
+                                <output expression="&quot;Oh no! Sembra che non hai pi&#249; soldi neccesari! Eccoti un recap di tutto quello che hai fatto mangiare a Mario.&quot;" newline="True"/>
+                            </then>
+                            <else>
+                                <assign variable="soldi" expression="soldi-CostPas"/>
+                                <assign variable="CPas" expression="CPas+1"/>
+                                <assign variable="CM" expression="CM+1"/>
+                            </else>
+                        </if>
+                    </else>
+                </if>
+            </while>
+            <output expression="CM &amp; Cpas &amp; Cpan" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>

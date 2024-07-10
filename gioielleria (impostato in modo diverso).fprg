@@ -1,0 +1,282 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Lupo01"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2024-03-15 12:20:54 "/>
+        <attribute name="created" value="THVwbzAxO0NPTVBVVEVSLUFOVE9OSTsyMDI0LTAyLTI2OyIwMzozOTo1NiAiOzI4Mzc="/>
+        <attribute name="edited" value="THVwbzAxO0NPTVBVVEVSLUFOVE9OSTsyMDI0LTAzLTA1OyIwNDowODozNSAiOzg7ZG9jZW50ZTtMQVBUT1AtRjkzS0JNUUs7MjAyNC0wMi0yMjsiMTA6MDI6MjcgIjtlc2VyY2l6aW8gcHJlemlvc2kgY29uIGZ1bnppb25pLmZwcmc7OTY3NQ=="/>
+        <attribute name="edited" value="THVwbzAxO0NPTVBVVEVSLUFOVE9OSTsyMDI0LTAzLTA1OyIwNDo1MDoxNCAiOzExOzI5ODA="/>
+        <attribute name="edited" value="U2lzdGVtaTA0O0RFU0tUT1AtUDZBTE5HVDsyMDI0LTAzLTE0OyIwMToyMDo1OCAiOzE7MzIyMA=="/>
+        <attribute name="edited" value="TGFiSW5mbztJTkZPMS1BTFUwNDsyMDI0LTAzLTE1OyIxMjoyMDo1NCAiOzI7MjY4Mg=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="VMax, dim" type="Integer" array="False" size=""/>
+            <declare name="j" type="Integer" array="False" size=""/>
+            <assign variable="VMax" expression="50"/>
+            <output expression="&quot;Quanti oggetti sono presenti nella gioielleria?&quot;" newline="True"/>
+            <input variable="dim"/>
+            <while expression="dim &lt;= 0 || dim &gt;VMax">
+                <output expression="&quot;Errore. Riprovare.&quot;" newline="True"/>
+                <input variable="dim"/>
+            </while>
+            <declare name="Marca" type="String" array="True" size="dim"/>
+            <declare name="Tipologia" type="String" array="True" size="dim"/>
+            <declare name="Codice" type="Integer" array="True" size="dim"/>
+            <declare name="Prezzo" type="Real" array="True" size="dim"/>
+            <call expression="Caricamento(Codice, Tipologia, Marca, Prezzo, dim)"/>
+            <for variable="j" start="0" end="dim-1" direction="inc" step="1">
+                <output expression="&quot;Codice: &quot; &amp; Codice[j] &amp; &quot; Tipologia: &quot; &amp; Tipologia[j] &amp; &quot; Marca: &quot; &amp; Marca[j] &amp; &quot; Prezzo: &quot; &amp; Prezzo[j]" newline="True"/>
+            </for>
+            <declare name="PosMax, PosMin" type="Integer" array="True" size="2"/>
+            <assign variable="PosMax[1]" expression="0"/>
+            <assign variable="PosMin[1]" expression="0"/>
+            <call expression="RicercaMassimoMinimo(Prezzo, dim, PosMax, PosMin)"/>
+            <output expression="&quot;L'oggetto piu' costoso e' &quot; &amp; Tipologia[PosMax[1]] &amp; &quot; di marca &quot; &amp; Marca[PosMax[1]] &amp; &quot; che costa &quot; &amp; Prezzo[PosMax[1]]" newline="True"/>
+            <output expression="&quot;L'oggetto piu' economico e' &quot; &amp; Tipologia[PosMin[1]] &amp; &quot; di marca &quot; &amp; Marca[PosMin[1]] &amp; &quot; che costa &quot; &amp; Prezzo[PosMin[1]]" newline="True"/>
+            <declare name="pos, cerca" type="Integer" array="True" size="2"/>
+            <declare name="cassa" type="Real" array="True" size="2"/>
+            <declare name="stop" type="Boolean" array="False" size=""/>
+            <declare name="scelta" type="String" array="False" size=""/>
+            <assign variable="stop" expression="false"/>
+            <while expression="stop = false">
+                <call expression="Vendita(dim, codice, pos, cassa, prezzo, cerca, tipologia, marca)"/>
+                <if expression="pos[1]!=-1">
+                    <then>
+                        <output expression="&quot;Venduto!&quot;" newline="True"/>
+                        <assign variable="dim" expression="dim-1"/>
+                    </then>
+                    <else>
+                        <output expression="&quot;Non &#232; stato trovato niente con quel codice!&quot;" newline="True"/>
+                    </else>
+                </if>
+                <output expression="&quot;Continuare la vendita?&quot;" newline="True"/>
+                <input variable="scelta"/>
+                <if expression="scelta=&quot;no&quot;">
+                    <then>
+                        <assign variable="stop" expression="true"/>
+                    </then>
+                    <else/>
+                </if>
+            </while>
+            <call expression="Ordinamento(Marca, Tipologia, Codice, Prezzo, dim)"/>
+            <for variable="j" start="0" end="dim-1" direction="inc" step="1">
+                <output expression="&quot;Codice: &quot; &amp; Codice[j] &amp; &quot; Tipologia: &quot; &amp; Tipologia[j] &amp; &quot; Marca: &quot; &amp; Marca[j] &amp; &quot; Prezzo: &quot; &amp; Prezzo[j]" newline="True"/>
+            </for>
+        </body>
+    </function>
+    <function name="Caricamento" type="None" variable="">
+        <parameters>
+            <parameter name="Codice" type="Integer" array="True"/>
+            <parameter name="Tipologia" type="String" array="True"/>
+            <parameter name="Marca" type="String" array="True"/>
+            <parameter name="Prezzo" type="Real" array="True"/>
+            <parameter name="dim" type="Integer" array="False"/>
+        </parameters>
+        <body>
+            <declare name="i, j" type="Integer" array="False" size=""/>
+            <declare name="c" type="Real" array="True" size="2"/>
+            <declare name="pos" type="Integer" array="True" size="2"/>
+            <assign variable="pos[1]" expression="-1"/>
+            <declare name="cassa" type="Integer" array="True" size="2"/>
+            <assign variable="cassa[1]" expression="0"/>
+            <declare name="nuovoCodice" type="Integer" array="False" size=""/>
+            <declare name="duplicato" type="Boolean" array="False" size=""/>
+            <assign variable="duplicato" expression="true"/>
+            <declare name="l" type="Integer" array="True" size="2"/>
+            <for variable="i" start="0" end="dim-1" direction="inc" step="1">
+                <assign variable="Codice[i]" expression="Random(99)+1"/>
+                <do expression="pos[1]!=-1">
+                    <assign variable="nuovoCodice" expression="Random(99)+1"/>
+                    <assign variable="l[1]" expression="i"/>
+                    <call expression="RicercaXcod(Codice, dim, nuovoCodice, pos, l)"/>
+                </do>
+                <assign variable="Codice[i]" expression="nuovoCodice"/>
+                <output expression="i+1 &amp; &quot; Codice: &quot; &amp; Codice[i]" newline="True"/>
+                <output expression="i+1 &amp; &quot; Tipologia: &quot;" newline="True"/>
+                <input variable="Tipologia[i]"/>
+                <output expression="i+1 &amp; &quot; Marca: &quot;" newline="True"/>
+                <input variable="Marca[i]"/>
+                <output expression="i+1 &amp; &quot; Prezzo: &quot;" newline="True"/>
+                <input variable="Prezzo[i]"/>
+                <while expression="Prezzo[i]&lt;=0">
+                    <output expression="&quot;Errore. Riprovare.&quot;" newline="True"/>
+                    <input variable="Prezzo[i]"/>
+                </while>
+            </for>
+        </body>
+    </function>
+    <function name="Ordinamento" type="None" variable="">
+        <parameters>
+            <parameter name="Marca" type="String" array="True"/>
+            <parameter name="Tipologia" type="String" array="True"/>
+            <parameter name="codice" type="Integer" array="True"/>
+            <parameter name="prezzo" type="Real" array="True"/>
+            <parameter name="dim" type="Integer" array="False"/>
+        </parameters>
+        <body>
+            <declare name="i, j" type="Integer" array="False" size=""/>
+            <declare name="s1" type="Real" array="False" size=""/>
+            <declare name="s2" type="String" array="False" size=""/>
+            <for variable="i" start="0" end="dim-2" direction="inc" step="1">
+                <for variable="j" start="i+1" end="dim-1" direction="inc" step="1">
+                    <if expression="prezzo[i]&gt;prezzo[j]">
+                        <then>
+                            <comment text="scambio prezzi"/>
+                            <assign variable="s1" expression="prezzo[i]"/>
+                            <assign variable="prezzo[i]" expression="prezzo[j]"/>
+                            <assign variable="prezzo[j]" expression="s1"/>
+                            <comment text="scambio codice"/>
+                            <assign variable="s1" expression="codice[i]"/>
+                            <assign variable="codice[i]" expression="codice[j]"/>
+                            <assign variable="codice[j]" expression="s1"/>
+                            <comment text="scambio marca"/>
+                            <assign variable="s2" expression="Marca[i]"/>
+                            <assign variable="Marca[i]" expression="Marca[j]"/>
+                            <assign variable="Marca[j]" expression="s2"/>
+                            <comment text="scambio tipologia"/>
+                            <assign variable="s2" expression="Tipologia[i]"/>
+                            <assign variable="Tipologia[i]" expression="Tipologia[j]"/>
+                            <assign variable="Tipologia[j]" expression="s2"/>
+                        </then>
+                        <else/>
+                    </if>
+                </for>
+            </for>
+        </body>
+    </function>
+    <function name="Ricerca" type="None" variable="">
+        <parameters>
+            <parameter name="dim" type="Integer" array="False"/>
+            <parameter name="codice" type="Integer" array="True"/>
+            <parameter name="pos" type="Integer" array="True"/>
+            <parameter name="cassa" type="Real" array="True"/>
+            <parameter name="prezzo" type="Real" array="True"/>
+            <parameter name="cerca" type="Integer" array="True"/>
+            <parameter name="tipologia" type="String" array="True"/>
+            <parameter name="marca" type="String" array="True"/>
+        </parameters>
+        <body>
+            <declare name="i" type="Integer" array="False" size=""/>
+            <assign variable="i" expression="0"/>
+            <declare name="trovato" type="Boolean" array="False" size=""/>
+            <assign variable="trovato" expression="false"/>
+            <while expression="(trovato = false) and i&lt;dim">
+                <if expression="cerca[1]=codice[i]">
+                    <then>
+                        <assign variable="pos[1]" expression="i"/>
+                        <assign variable="trovato" expression="true"/>
+                    </then>
+                    <else>
+                        <assign variable="i" expression="i+1"/>
+                    </else>
+                </if>
+            </while>
+        </body>
+    </function>
+    <function name="RicercaMassimoMinimo" type="None" variable="">
+        <parameters>
+            <parameter name="Prezzo" type="Real" array="True"/>
+            <parameter name="dim" type="Integer" array="False"/>
+            <parameter name="PosMax" type="Integer" array="True"/>
+            <parameter name="PosMin" type="Integer" array="True"/>
+        </parameters>
+        <body>
+            <declare name="i" type="Integer" array="False" size=""/>
+            <declare name="PrezzoMinimo" type="Real" array="True" size="2"/>
+            <declare name="PrezzoMassimo" type="Real" array="True" size="2"/>
+            <assign variable="PrezzoMassimo[1]" expression="0"/>
+            <assign variable="PrezzoMinimo[1]" expression="9999999999"/>
+            <for variable="i" start="0" end="dim-1" direction="inc" step="1">
+                <if expression="Prezzo[i] &lt; prezzoMinimo[1]">
+                    <then>
+                        <assign variable="prezzoMinimo[1]" expression="Prezzo[i]"/>
+                        <assign variable="PosMin[1]" expression="i"/>
+                    </then>
+                    <else/>
+                </if>
+                <if expression="Prezzo[i] &gt; PrezzoMassimo[1]">
+                    <then>
+                        <assign variable="PrezzoMassimo[1]" expression="Prezzo[i]"/>
+                        <assign variable="PosMax[1]" expression="i"/>
+                    </then>
+                    <else/>
+                </if>
+            </for>
+        </body>
+    </function>
+    <function name="RicercaXcod" type="Boolean" variable="esito">
+        <parameters>
+            <parameter name="A" type="Integer" array="True"/>
+            <parameter name="n" type="Integer" array="False"/>
+            <parameter name="cercato" type="Integer" array="False"/>
+            <parameter name="posCercato" type="Integer" array="True"/>
+            <parameter name="j" type="Integer" array="True"/>
+        </parameters>
+        <body>
+            <declare name="esito" type="Boolean" array="False" size=""/>
+            <assign variable="esito" expression="false"/>
+            <assign variable="posCercato[1]" expression="-1"/>
+            <declare name="i" type="Integer" array="False" size=""/>
+            <assign variable="i" expression="0"/>
+            <while expression="(esito = false) and (i &lt; j[1])">
+                <if expression="cercato = A[i]">
+                    <then>
+                        <assign variable="esito" expression="true"/>
+                        <assign variable="posCercato[1]" expression="i"/>
+                    </then>
+                    <else>
+                        <assign variable="i" expression="i+1"/>
+                        <assign variable="esito" expression="false"/>
+                    </else>
+                </if>
+            </while>
+        </body>
+    </function>
+    <function name="Rimuovi" type="None" variable="">
+        <parameters>
+            <parameter name="dim" type="Integer" array="False"/>
+            <parameter name="codice" type="Integer" array="True"/>
+            <parameter name="tipologia" type="String" array="True"/>
+            <parameter name="marca" type="String" array="True"/>
+            <parameter name="pos" type="Integer" array="True"/>
+            <parameter name="prezzo" type="Real" array="True"/>
+        </parameters>
+        <body>
+            <declare name="i" type="Integer" array="False" size=""/>
+            <for variable="i" start="pos[1]" end="dim-2" direction="inc" step="1">
+                <assign variable="codice[i]" expression="codice[i+1]"/>
+                <assign variable="tipologia[i]" expression="tipologia[i+1]"/>
+                <assign variable="marca[i]" expression="marca[i+1]"/>
+                <assign variable="prezzo[i]" expression="prezzo[i+1]"/>
+            </for>
+        </body>
+    </function>
+    <function name="Vendita" type="None" variable="">
+        <parameters>
+            <parameter name="dim" type="Integer" array="False"/>
+            <parameter name="codice" type="Integer" array="True"/>
+            <parameter name="pos" type="Integer" array="True"/>
+            <parameter name="cassa" type="Real" array="True"/>
+            <parameter name="Prezzo" type="Real" array="True"/>
+            <parameter name="cerca" type="Integer" array="True"/>
+            <parameter name="tipologia" type="String" array="True"/>
+            <parameter name="marca" type="String" array="True"/>
+        </parameters>
+        <body>
+            <output expression="&quot;Cosa vuoi vendere?&quot;" newline="True"/>
+            <input variable="cerca[1]"/>
+            <assign variable="pos[1]" expression="-1"/>
+            <call expression="Ricerca(dim, codice, pos, cassa, prezzo, cerca, tipologia, marca)"/>
+            <if expression="pos[1]!=-1">
+                <then>
+                    <call expression="Rimuovi(dim, codice, tipologia, marca, pos, prezzo)"/>
+                </then>
+                <else/>
+            </if>
+        </body>
+    </function>
+</flowgorithm>

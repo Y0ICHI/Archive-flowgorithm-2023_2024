@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Lupo01"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-11-29 01:21:06 "/>
+        <attribute name="created" value="THVwbzAxO0NPTVBVVEVSLUFOVE9OSTsyMDIzLTExLTI4OyIwNToyNjo0MCAiOzI4Mjk="/>
+        <attribute name="edited" value="THVwbzAxO0NPTVBVVEVSLUFOVE9OSTsyMDIzLTExLTI4OyIwNTo1NDoxNSAiOzE7Mjk0MA=="/>
+        <attribute name="edited" value="TGFiSW5mbztJTkZPMS1BTFUwNDsyMDIzLTExLTI5OyIwMToyMTowNiAiOzE7MjY4MA=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="NUM, EXP, R, C, F" type="Integer" array="False" size=""/>
+            <output expression="&quot;NUM&quot;" newline="True"/>
+            <input variable="NUM"/>
+            <while expression="NUM&lt;0">
+                <output expression="&quot;NUM&quot;" newline="True"/>
+                <input variable="NUM"/>
+            </while>
+            <output expression="&quot;EXP&quot;" newline="True"/>
+            <input variable="EXP"/>
+            <while expression="EXP&lt;0">
+                <output expression="&quot;EXP&quot;" newline="True"/>
+                <input variable="EXP"/>
+            </while>
+            <assign variable="C" expression="NUM"/>
+            <assign variable="R" expression="1"/>
+            <while expression="R!=EXP">
+                <assign variable="NUM" expression="NUM*C"/>
+                <assign variable="R" expression="R+1"/>
+            </while>
+            <output expression="NUM" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>

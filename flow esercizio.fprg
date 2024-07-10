@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="docente"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-10-12 10:35:16 "/>
+        <attribute name="created" value="ZG9jZW50ZTtMQVBUT1AtRjkzS0JNUUs7MjAyMy0xMC0xMjsiMTA6MTg6MjUgIjsyOTgy"/>
+        <attribute name="edited" value="ZG9jZW50ZTtMQVBUT1AtRjkzS0JNUUs7MjAyMy0xMC0xMjsiMTA6MzU6MTYgIjsxOzMwODk="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="Pc, P1, P2, P3, Pp, moltiplicatore, Sup" type="Integer" array="False" size=""/>
+            <declare name="x, SpesaTot" type="Real" array="False" size=""/>
+            <declare name="errore" type="Boolean" array="False" size=""/>
+            <declare name="zona" type="String" array="False" size=""/>
+            <assign variable="Pc" expression="1500"/>
+            <assign variable="P1" expression="1200"/>
+            <assign variable="P2" expression="1400"/>
+            <assign variable="P3" expression="1300"/>
+            <assign variable="Pp" expression="1000"/>
+            <assign variable="errore" expression="false"/>
+            <output expression="&quot;Fornire il valore della superficie (m^2): &quot;" newline="True"/>
+            <input variable="Sup"/>
+            <if expression="Sup &lt;= 0">
+                <then>
+                    <output expression="&quot;Il valore non &#232; corretto&quot;" newline="True"/>
+                </then>
+                <else>
+                    <output expression="&quot;Inserire la zona di appartenenza dell'appartamento (C, 1, 2, 3, P)&quot;" newline="True"/>
+                    <input variable="zona"/>
+                    <if expression="zona = &quot;C&quot;">
+                        <then>
+                            <assign variable="moltiplicatore" expression="Pc"/>
+                        </then>
+                        <else>
+                            <if expression="zona = &quot;1&quot;">
+                                <then>
+                                    <assign variable="moltiplicatore" expression="P1"/>
+                                </then>
+                                <else>
+                                    <if expression="zona = &quot;2&quot;">
+                                        <then>
+                                            <assign variable="moltiplicatore" expression="P2"/>
+                                        </then>
+                                        <else>
+                                            <if expression="zona = &quot;3&quot;">
+                                                <then>
+                                                    <assign variable="moltiplicatore" expression="P3"/>
+                                                </then>
+                                                <else>
+                                                    <assign variable="moltiplicatore" expression="Pp"/>
+                                                </else>
+                                            </if>
+                                        </else>
+                                    </if>
+                                </else>
+                            </if>
+                        </else>
+                    </if>
+                    <assign variable="SpesaTot" expression="Sup * moltiplicatore"/>
+                    <output expression="&quot;La spesa totale &#232; &quot;" newline="True"/>
+                    <output expression="SpesaTot" newline="True"/>
+                    <output expression="&quot;Fornire un valore percentuale per la provvigione spettante l'agenzia: &quot;" newline="True"/>
+                    <input variable="x"/>
+                    <if expression="x&lt;= 0 and x&lt;=100">
+                        <then/>
+                        <else>
+                            <output expression="&quot;Valore percentuale errato.&quot;" newline="True"/>
+                        </else>
+                    </if>
+                </else>
+            </if>
+        </body>
+    </function>
+</flowgorithm>

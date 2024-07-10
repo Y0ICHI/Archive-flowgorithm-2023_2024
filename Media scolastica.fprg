@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Lupo01"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-11-15 04:03:48 "/>
+        <attribute name="created" value="THVwbzAxO0NPTVBVVEVSLUFOVE9OSTsyMDIzLTExLTE1OyIwMzoyOToxNyAiOzI4MzA="/>
+        <attribute name="edited" value="THVwbzAxO0NPTVBVVEVSLUFOVE9OSTsyMDIzLTExLTE1OyIwNDowMzo0OCAiOzM7MjkzNw=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="N, N2, M" type="Real" array="False" size=""/>
+            <declare name="C" type="Integer" array="False" size=""/>
+            <assign variable="N2" expression="0"/>
+            <output expression="&quot;Scrivi i numeri con cui fare la media. Per fermare il programma scrivi 0&quot;" newline="True"/>
+            <input variable="N"/>
+            <while expression="N&lt;=0 or N&gt;10">
+                <if expression="N&lt;0">
+                    <then>
+                        <output expression="&quot;Errore, inserire almeno un numero superiore a 0.&quot;" newline="True"/>
+                        <input variable="N"/>
+                    </then>
+                    <else>
+                        <if expression="N=0">
+                            <then>
+                                <output expression="&quot;Errore, il primo numero inserito non pu&#242; fermarsi senza avere inserito almeno un numero valido.&quot;" newline="True"/>
+                                <input variable="N"/>
+                            </then>
+                            <else>
+                                <output expression="&quot;Errore, il numero inserito &#232; maggiore di 10, inserire un numero valido.&quot;" newline="True"/>
+                                <input variable="N"/>
+                            </else>
+                        </if>
+                    </else>
+                </if>
+            </while>
+            <assign variable="C" expression="0"/>
+            <assign variable="N2" expression="N"/>
+            <while expression="N!=0">
+                <assign variable="C" expression="C+1"/>
+                <input variable="N"/>
+                <while expression="N&lt;0 or N&gt;10">
+                    <output expression="&quot;Errore, il numero inserito non pu&#242; essere minore di 0 oppure maggiore di 10.&quot;" newline="True"/>
+                    <input variable="N"/>
+                </while>
+                <assign variable="N2" expression="N+N2"/>
+            </while>
+            <assign variable="M" expression="N2/C"/>
+            <output expression="M" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>

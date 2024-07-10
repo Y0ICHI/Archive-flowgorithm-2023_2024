@@ -1,0 +1,142 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Lupo01"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2024-02-19 07:50:25 "/>
+        <attribute name="created" value="THVwbzAxO0NPTVBVVEVSLUFOVE9OSTsyMDI0LTAyLTE5OyIwNjozOTo0NCAiOzI4Mzk="/>
+        <attribute name="edited" value="THVwbzAxO0NPTVBVVEVSLUFOVE9OSTsyMDI0LTAyLTE5OyIwNzo1MDoyNSAiOzE7Mjk0MA=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="Max, oggetti, i, MaxP, MinP, posmax, posmin, trovato, somma, minf, maxf" type="Integer" array="False" size=""/>
+            <assign variable="trovato" expression="0"/>
+            <assign variable="somma" expression="0"/>
+            <declare name="stop" type="Boolean" array="False" size=""/>
+            <declare name="cerca, scelta" type="String" array="False" size=""/>
+            <assign variable="stop" expression="false"/>
+            <assign variable="Max" expression="50"/>
+            <output expression="&quot;oggetti&quot;" newline="True"/>
+            <input variable="oggetti"/>
+            <while expression="oggetti&lt;1 || oggetti&gt;Max">
+                <output expression="&quot;Errore. Riprovare&quot;" newline="True"/>
+                <input variable="oggetti"/>
+            </while>
+            <declare name="CD, PREZ" type="Integer" array="True" size="oggetti"/>
+            <declare name="TI, MAR" type="String" array="True" size="oggetti"/>
+            <for variable="i" start="0" end="oggetti-1" direction="inc" step="1">
+                <assign variable="CD[i]" expression="Random(99)+1"/>
+                <output expression="&quot;Codice: &quot; &amp; CD[i]" newline="True"/>
+                <output expression="&quot;Tipologia&quot;" newline="True"/>
+                <input variable="TI[i]"/>
+                <output expression="&quot;Marca/Modello&quot;" newline="True"/>
+                <input variable="MAR[i]"/>
+                <output expression="&quot;Prezzo&quot;" newline="True"/>
+                <input variable="PREZ[i]"/>
+                <output expression="&quot;----------------------&quot;" newline="True"/>
+            </for>
+            <assign variable="MaxP" expression="0"/>
+            <assign variable="MinP" expression="PREZ[0]"/>
+            <assign variable="posmin" expression="0"/>
+            <for variable="i" start="0" end="oggetti-1" direction="inc" step="1">
+                <if expression="MaxP&lt;PREZ[i]">
+                    <then>
+                        <assign variable="MaxP" expression="PREZ[i]"/>
+                        <assign variable="posmax" expression="i"/>
+                    </then>
+                    <else/>
+                </if>
+                <if expression="MinP&gt;PREZ[i]">
+                    <then>
+                        <assign variable="MinP" expression="PREZ[i]"/>
+                        <assign variable="posmin" expression="i"/>
+                    </then>
+                    <else/>
+                </if>
+            </for>
+            <output expression="&quot;Oggetto meno costoso: &quot; &amp; MinP &amp; &quot; con codice: &quot; &amp; CD[posmin]" newline="True"/>
+            <output expression="&quot;Oggetto pi&#249; costoso: &quot; &amp; MaxP &amp; &quot; con codice: &quot; &amp; CD[posmax]" newline="True"/>
+            <while expression="stop=false">
+                <output expression="&quot;Che oggetto ti interessa cercare?&quot;" newline="True"/>
+                <input variable="cerca"/>
+                <for variable="i" start="0" end="oggetti-1" direction="inc" step="1">
+                    <if expression="cerca=TI[i]">
+                        <then>
+                            <assign variable="trovato" expression="trovato+1"/>
+                            <assign variable="stop" expression="true"/>
+                            <assign variable="somma" expression="somma+PREZ[i]"/>
+                        </then>
+                        <else/>
+                    </if>
+                </for>
+                <if expression="trovato!=0">
+                    <then>
+                        <output expression="&quot;Sono stati trovati &quot; &amp; trovato &amp; &quot; oggetti.&quot;" newline="True"/>
+                        <output expression="&quot;Il valore totale &#232; di: &quot; &amp; somma" newline="True"/>
+                    </then>
+                    <else>
+                        <output expression="&quot;Non &#232; stato trovato niente! Continuare la ricerca?&quot;" newline="True"/>
+                        <input variable="scelta"/>
+                        <while expression="scelta!=&quot;si&quot; and scelta!=&quot;no&quot;">
+                            <output expression="&quot;Errore, inserire una scelta valida.&quot;" newline="True"/>
+                            <input variable="scelta"/>
+                        </while>
+                        <if expression="scelta=&quot;no&quot;">
+                            <then>
+                                <assign variable="stop" expression="true"/>
+                            </then>
+                            <else/>
+                        </if>
+                    </else>
+                </if>
+            </while>
+            <assign variable="stop" expression="false"/>
+            <assign variable="trovato" expression="0"/>
+            <while expression="stop=false">
+                <output expression="&quot;Inserire una fascia di prezzo&quot;" newline="True"/>
+                <output expression="&quot;minimo: &quot;" newline="False"/>
+                <input variable="minf"/>
+                <output expression="&quot;massimo: &quot;" newline="False"/>
+                <input variable="maxf"/>
+                <for variable="i" start="0" end="oggetti-1" direction="inc" step="1">
+                    <if expression="PREZ[i]&gt;minf and PREZ[i]&lt;maxf">
+                        <then>
+                            <assign variable="trovato" expression="trovato+1"/>
+                            <assign variable="stop" expression="true"/>
+                        </then>
+                        <else/>
+                    </if>
+                </for>
+                <if expression="trovato!=0">
+                    <then>
+                        <output expression="&quot;Oggetti trovati!&quot;" newline="True"/>
+                        <for variable="i" start="0" end="oggetti-1" direction="inc" step="1">
+                            <if expression="PREZ[i]&gt;minf and PREZ[i]&lt;maxf">
+                                <then>
+                                    <output expression="&quot;Tipologia: &quot; &amp; TI[i] &amp; &quot; Marca: &quot; &amp; MAR[i] &amp; &quot; Prezzo: &quot; &amp; PREZ[i]" newline="True"/>
+                                </then>
+                                <else/>
+                            </if>
+                        </for>
+                    </then>
+                    <else>
+                        <output expression="&quot;Oggetti non trovati. Continuare la ricerca?&quot;" newline="True"/>
+                        <input variable="scelta"/>
+                        <while expression="scelta!=&quot;si&quot; and scelta!=&quot;no&quot;">
+                            <output expression="&quot;Errore, inserire una scelta valida.&quot;" newline="True"/>
+                            <input variable="scelta"/>
+                        </while>
+                        <if expression="scelta=&quot;no&quot;">
+                            <then>
+                                <assign variable="stop" expression="true"/>
+                            </then>
+                            <else/>
+                        </if>
+                    </else>
+                </if>
+            </while>
+        </body>
+    </function>
+</flowgorithm>

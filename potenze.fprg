@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="LabInfo"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-10-22 04:56:07 "/>
+        <attribute name="created" value="TGFiSW5mbztJTkZPMS1BTFUwNjsyMDIzLTEwLTIwOyIxMjozMTo1OCAiOzI1NzQ="/>
+        <attribute name="edited" value="TGFiSW5mbztJTkZPMS1BTFUwNjsyMDIzLTEwLTIwOyIxMjo1NjoyMyAiOzE7MjY4MQ=="/>
+        <attribute name="edited" value="THVwbzAxO0NPTVBVVEVSLUFOVE9OSTsyMDIzLTEwLTIyOyIwNDo1NjowNyAiOzE7MjkzNQ=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="B, E, S, C" type="Integer" array="False" size=""/>
+            <output expression="&quot;1B&quot;" newline="True"/>
+            <input variable="B"/>
+            <output expression="&quot;2E&quot;" newline="True"/>
+            <input variable="E"/>
+            <if expression="B&gt;0 &amp;&amp; E&gt;0">
+                <then>
+                    <assign variable="C" expression="1"/>
+                    <assign variable="S" expression="B"/>
+                    <while expression="C&lt;E">
+                        <assign variable="S" expression="S*B"/>
+                        <assign variable="C" expression="C+1"/>
+                    </while>
+                    <output expression="S" newline="True"/>
+                </then>
+                <else>
+                    <output expression="&quot;VNV&quot;" newline="True"/>
+                </else>
+            </if>
+        </body>
+    </function>
+</flowgorithm>

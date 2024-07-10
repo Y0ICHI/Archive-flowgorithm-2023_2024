@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="LabInfo"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-11-17 12:50:11 "/>
+        <attribute name="created" value="TGFiSW5mbztJTkZPMS1BTFUwMzsyMDIzLTExLTE3OyIxMjoyNTo1OCAiOzI1ODE="/>
+        <attribute name="edited" value="TGFiSW5mbztJTkZPMS1BTFUwMzsyMDIzLTExLTE3OyIxMjo1MDoxMSAiOzI7MjY3Nw=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="NUM, NUM2, C, R" type="Integer" array="False" size=""/>
+            <assign variable="NUM2" expression="1"/>
+            <assign variable="C" expression="0"/>
+            <assign variable="NUM" expression="0"/>
+            <output expression="&quot;R&quot;" newline="True"/>
+            <input variable="R"/>
+            <while expression="C&lt;R">
+                <assign variable="C" expression="C+1"/>
+                <assign variable="NUM" expression="NUM+NUM2"/>
+                <assign variable="NUM2" expression="NUM2+1"/>
+            </while>
+            <assign variable="NUM" expression="NUM*2"/>
+            <output expression="NUM" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>

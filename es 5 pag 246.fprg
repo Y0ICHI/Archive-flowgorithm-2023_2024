@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Lupo01"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2024-01-08 05:50:02 "/>
+        <attribute name="created" value="THVwbzAxO0NPTVBVVEVSLUFOVE9OSTsyMDI0LTAxLTA4OyIwNDo0MjozMCAiOzI4MjM="/>
+        <attribute name="edited" value="THVwbzAxO0NPTVBVVEVSLUFOVE9OSTsyMDI0LTAxLTA4OyIwNTo1MDowMiAiOzI7MjkzMQ=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="N" type="Integer" array="True" size="10"/>
+            <declare name="i, C" type="Integer" array="False" size=""/>
+            <assign variable="i" expression="0"/>
+            <comment text="Inserimento numeri&#13;&#10;"/>
+            <while expression="i &lt; 10">
+                <input variable="N[i]"/>
+                <assign variable="i" expression="i+1"/>
+            </while>
+            <assign variable="i" expression="0"/>
+            <assign variable="C" expression="0"/>
+            <comment text="fa' il controllo con tutti i numeri"/>
+            <while expression="i&lt;10">
+                <while expression="C&lt;10">
+                    <if expression="N[i]==N[C]">
+                        <then>
+                            <output expression="i &amp; &quot;Vero&quot;" newline="True"/>
+                            <assign variable="C" expression="10"/>
+                        </then>
+                        <else>
+                            <output expression="i &amp; &quot;Falsso&quot;" newline="True"/>
+                        </else>
+                    </if>
+                    <assign variable="C" expression="C+1"/>
+                </while>
+                <assign variable="C" expression="0"/>
+                <assign variable="i" expression="i+1"/>
+            </while>
+        </body>
+    </function>
+</flowgorithm>

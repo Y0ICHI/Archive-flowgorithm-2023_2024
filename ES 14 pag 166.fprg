@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="LabInfo"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-11-17 12:25:57 "/>
+        <attribute name="created" value="TGFiSW5mbztJTkZPMS1BTFUwMzsyMDIzLTExLTE3OyIxMTo0NzoxMCAiOzI1NzI="/>
+        <attribute name="edited" value="TGFiSW5mbztJTkZPMS1BTFUwMzsyMDIzLTExLTE3OyIxMjoyNTo1NyAiOzI7MjY4OQ=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="MAX, N, N2" type="Integer" array="False" size=""/>
+            <assign variable="N2" expression="0"/>
+            <output expression="&quot;Inserisci il numero massimo&quot;" newline="True"/>
+            <input variable="MAX"/>
+            <do expression="N2&lt;=MAX">
+                <output expression="&quot;Inserire il numero con cui sommare&quot;" newline="True"/>
+                <input variable="N"/>
+                <assign variable="N2" expression="N+N2"/>
+            </do>
+            <assign variable="N2" expression="N2-MAX"/>
+            <output expression="&quot;Il numero massimo che hai inserito &#232; &quot; &amp; MAX &amp; &quot; e la somma supera il numero di &quot; &amp; N2 &amp; &quot; cifre&quot;" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>

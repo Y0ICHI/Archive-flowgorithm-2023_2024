@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Lupo01"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-10-04 05:12:09 "/>
+        <attribute name="created" value="THVwbzAxO0NPTVBVVEVSLUFOVE9OSTsyMDIzLTEwLTA0OyIwNDowMjowNCAiOzI4MTU="/>
+        <attribute name="edited" value="THVwbzAxO0NPTVBVVEVSLUFOVE9OSTsyMDIzLTEwLTA0OyIwNToxMjowOSAiOzE7MjkzMA=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="ora" type="Integer" array="False" size=""/>
+            <output expression="&quot;Che ore sono da te?&quot;" newline="True"/>
+            <input variable="ora"/>
+            <while expression="ora&gt;24 or ora&lt;1">
+                <output expression="&quot;ammazati :3&quot;" newline="True"/>
+                <input variable="ora"/>
+            </while>
+            <if expression="ora&gt;=18 || ora&lt;=4">
+                <then>
+                    <output expression="&quot;buonasera! :]&quot;" newline="True"/>
+                </then>
+                <else>
+                    <if expression="ora&gt;=5 &amp;&amp; ora&lt;12">
+                        <then>
+                            <output expression="&quot;buongiorno! :)&quot;" newline="True"/>
+                        </then>
+                        <else>
+                            <if expression="ora&gt;=13 &amp;&amp; ora&lt;=17">
+                                <then>
+                                    <output expression="&quot;buon pomeriggio! :D&quot;" newline="True"/>
+                                </then>
+                                <else/>
+                            </if>
+                        </else>
+                    </if>
+                </else>
+            </if>
+        </body>
+    </function>
+</flowgorithm>

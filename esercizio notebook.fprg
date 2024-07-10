@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Lupo01"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2024-03-11 09:38:26 "/>
+        <attribute name="created" value="THVwbzAxO0NPTVBVVEVSLUFOVE9OSTsyMDI0LTAzLTExOyIwNjowNTo1NCAiOzI4MjY="/>
+        <attribute name="edited" value="THVwbzAxO0NPTVBVVEVSLUFOVE9OSTsyMDI0LTAzLTExOyIwOTozODoyNiAiOzQ7Mjk0NQ=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="MAXDIM, dim, m, trovato, nt, ntot, npt" type="Integer" array="False" size=""/>
+            <assign variable="MAXDIM" expression="50"/>
+            <output expression="&quot;dim&quot;" newline="True"/>
+            <input variable="dim"/>
+            <while expression="dim&lt;=0 || dim&gt;MAXDIM">
+                <output expression="&quot;Errore&quot;" newline="True"/>
+                <input variable="dim"/>
+            </while>
+            <declare name="Marca, Modello" type="String" array="True" size="dim"/>
+            <declare name="PD" type="Integer" array="True" size="dim"/>
+            <declare name="Prezzo" type="Real" array="True" size="dim"/>
+            <declare name="cerca" type="String" array="False" size=""/>
+            <call expression="Caricamento(Marca, Modello, PD, Prezzo, dim)"/>
+            <output expression="&quot;cerca&quot;" newline="True"/>
+            <input variable="cerca"/>
+            <assign variable="nt" expression="0"/>
+            <assign variable="ntot" expression="0"/>
+            <assign variable="npt" expression="0"/>
+            <for variable="m" start="0" end="dim-2" direction="inc" step="1">
+                <assign variable="trovato" expression="Cerca(cerca, Marca, m, dim)"/>
+                <if expression="trovato!=-1">
+                    <then>
+                        <assign variable="nt" expression="nt+1"/>
+                        <assign variable="ntot" expression="ntot+Prezzo[trovato]"/>
+                        <assign variable="npt" expression="npt+PD[trovato]"/>
+                    </then>
+                    <else/>
+                </if>
+            </for>
+            <if expression="nt!=0">
+                <then>
+                    <output expression="&quot;Sono stati trovati &quot; &amp; nt &amp; &quot; di notebook con un valore totale di &quot; &amp; ntot &amp; &quot; con &quot; &amp; npt &amp; &quot; pezzi trovati!&quot;" newline="True"/>
+                </then>
+                <else>
+                    <output expression="&quot;Non trovato&quot;" newline="True"/>
+                </else>
+            </if>
+            <for variable="m" start="0" end="dim-1" direction="inc" step="1">
+                <assign variable="trovato" expression="Trovato(Marca, Modello, dim)"/>
+                <if expression="trovato!=-1">
+                    <then>
+                        <output expression="&quot;Trovato! Il numero di pezzi disponibili &#232; &quot; &amp; PD[trovato] &amp; &quot; mentre il valore &#232; di &quot; &amp; Prezzo[trovato]" newline="True"/>
+                    </then>
+                    <else/>
+                </if>
+            </for>
+        </body>
+    </function>
+    <function name="Caricamento" type="None" variable="pos">
+        <parameters>
+            <parameter name="Marca" type="String" array="True"/>
+            <parameter name="Modello" type="String" array="True"/>
+            <parameter name="PD" type="Integer" array="True"/>
+            <parameter name="Prezzo" type="Real" array="True"/>
+            <parameter name="pos" type="Integer" array="False"/>
+        </parameters>
+        <body>
+            <declare name="i, controllo" type="Integer" array="False" size=""/>
+            <for variable="i" start="0" end="pos-1" direction="inc" step="1">
+                <do expression="controllo!=-1">
+                    <output expression="i+1 &amp; &quot; Marca&quot;" newline="True"/>
+                    <input variable="Marca[i]"/>
+                    <output expression="i+1 &amp; &quot;Modello&quot;" newline="True"/>
+                    <input variable="Modello[i]"/>
+                    <assign variable="controllo" expression="Trovato(Marca, Modello, i)"/>
+                </do>
+                <output expression="i+1 &amp; &quot; PD&quot;" newline="True"/>
+                <input variable="PD[i]"/>
+                <output expression="i+1 &amp; &quot; Prezzo&quot;" newline="True"/>
+                <input variable="Prezzo[i]"/>
+            </for>
+        </body>
+    </function>
+    <function name="Cerca" type="Integer" variable="pos">
+        <parameters>
+            <parameter name="cerca" type="String" array="False"/>
+            <parameter name="Marca" type="String" array="True"/>
+            <parameter name="j" type="Integer" array="False"/>
+            <parameter name="dim" type="Integer" array="False"/>
+        </parameters>
+        <body>
+            <declare name="pos, i" type="Integer" array="False" size=""/>
+            <assign variable="pos" expression="-1"/>
+            <for variable="i" start="j+1" end="dim-1" direction="inc" step="1">
+                <if expression="cerca=Marca[i]">
+                    <then>
+                        <assign variable="pos" expression="i"/>
+                        <assign variable="i" expression="51"/>
+                    </then>
+                    <else/>
+                </if>
+            </for>
+        </body>
+    </function>
+    <function name="Trovato" type="Integer" variable="pos">
+        <parameters>
+            <parameter name="Marca" type="String" array="True"/>
+            <parameter name="Modello" type="String" array="True"/>
+            <parameter name="posr" type="Integer" array="False"/>
+        </parameters>
+        <body>
+            <declare name="pos" type="Integer" array="False" size=""/>
+            <assign variable="pos" expression="-1"/>
+            <declare name="i, j" type="Integer" array="False" size=""/>
+            <for variable="i" start="0" end="posr-1" direction="inc" step="1">
+                <if expression="Marca[i] = Marca[posr] &amp;&amp; Modello[i] = Modello[posr]">
+                    <then>
+                        <assign variable="pos" expression="i"/>
+                    </then>
+                    <else/>
+                </if>
+            </for>
+        </body>
+    </function>
+</flowgorithm>

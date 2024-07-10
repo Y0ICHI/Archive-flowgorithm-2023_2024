@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="LabInfo"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-11-09 04:15:06 "/>
+        <attribute name="created" value="TGFiSW5mbztJTkZPMS1BTFUwODsyMDIzLTExLTA4OyIwMTo0NDo0NSAiOzI1ODE="/>
+        <attribute name="edited" value="TGFiSW5mbztJTkZPMS1BTFUwODsyMDIzLTExLTA4OyIwMTo0NjoxMSAiOzE7MjY4NA=="/>
+        <attribute name="edited" value="THVwbzAxO0NPTVBVVEVSLUFOVE9OSTsyMDIzLTExLTA5OyIwNDoxNTowNiAiOzM7MjkzNw=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="N, S" type="Integer" array="False" size=""/>
+            <assign variable="N" expression="10"/>
+            <assign variable="S" expression="0"/>
+            <while expression="N&gt;=10 &amp;&amp; N&lt;=100">
+                <assign variable="S" expression="S+N"/>
+                <assign variable="N" expression="N+5"/>
+            </while>
+            <output expression="S" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>

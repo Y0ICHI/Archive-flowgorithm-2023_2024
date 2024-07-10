@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="LabInfo"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2024-02-02 12:21:18 "/>
+        <attribute name="created" value="TGFiSW5mbztJTkZPMS1BTFUyMTsyMDI0LTAyLTAyOyIxMTo1NDozNCAiOzI1NzE="/>
+        <attribute name="edited" value="TGFiSW5mbztJTkZPMS1BTFUyMTsyMDI0LTAyLTAyOyIxMjoyMToxOCAiOzE7MjY3Ng=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="dim, i, V" type="Integer" array="False" size=""/>
+            <assign variable="dim" expression="3"/>
+            <declare name="N" type="Integer" array="True" size="dim"/>
+            <assign variable="V" expression="0"/>
+            <for variable="i" start="0" end="dim-1" direction="inc" step="1">
+                <output expression="&quot;Inserire il &quot; &amp; i+1 &amp; &quot; numero.&quot;" newline="True"/>
+                <input variable="N[i]"/>
+            </for>
+            <for variable="i" start="0" end="dim-2" direction="inc" step="1">
+                <if expression="N[i+1]&lt;N[i]">
+                    <then>
+                        <assign variable="V" expression="1"/>
+                    </then>
+                    <else/>
+                </if>
+            </for>
+            <if expression="V=1">
+                <then>
+                    <output expression="&quot;I numeri inseriti non sono crescenti&quot;" newline="True"/>
+                </then>
+                <else>
+                    <output expression="&quot;Gay&quot;" newline="True"/>
+                </else>
+            </if>
+        </body>
+    </function>
+</flowgorithm>

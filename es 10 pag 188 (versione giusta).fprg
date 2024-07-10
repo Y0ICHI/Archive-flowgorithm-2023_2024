@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="LabInfo"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-11-22 01:24:38 "/>
+        <attribute name="created" value="TGFiSW5mbztJTkZPMS1BTFUwODsyMDIzLTExLTIyOyIwMTowNTo0MCAiOzI1Njk="/>
+        <attribute name="edited" value="TGFiSW5mbztJTkZPMS1BTFUwODsyMDIzLTExLTIyOyIwMToyNDozOCAiOzI7MjY4Ng=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="i, conta" type="Integer" array="False" size=""/>
+            <assign variable="conta" expression="0"/>
+            <for variable="i" start="1" end="100" direction="inc" step="1">
+                <if expression="i=77">
+                    <then>
+                        <assign variable="conta" expression="conta+2"/>
+                    </then>
+                    <else>
+                        <if expression="i=7 or int(i/10)=7 or i%10=7">
+                            <then>
+                                <assign variable="conta" expression="conta+1"/>
+                            </then>
+                            <else/>
+                        </if>
+                    </else>
+                </if>
+            </for>
+            <output expression="conta" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>

@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Lupo01"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-10-26 10:45:55 "/>
+        <attribute name="created" value="THVwbzAxO0NPTVBVVEVSLUFOVE9OSTsyMDIzLTEwLTIyOyIwNTozMjoyNCAiOzI4MjE="/>
+        <attribute name="edited" value="THVwbzAxO0NPTVBVVEVSLUFOVE9OSTsyMDIzLTEwLTI2OyIxMDo0NTo1NSAiOzQ7Mjk0MA=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="N, M, P, C" type="Integer" array="False" size=""/>
+            <output expression="&quot;N&quot;" newline="True"/>
+            <input variable="N"/>
+            <assign variable="P" expression="N"/>
+            <assign variable="M" expression="N"/>
+            <assign variable="C" expression="0"/>
+            <do expression="N&lt;M">
+                <assign variable="C" expression="C+1"/>
+                <assign variable="N" expression="M"/>
+                <output expression="&quot;Dammi i prossimo numero&quot;" newline="True"/>
+                <input variable="M"/>
+            </do>
+            <output expression="&quot;Hai inserito &quot; &amp; C &amp; &quot; numeri crescenti, prima di inserirne uno non valido.&quot;" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>
